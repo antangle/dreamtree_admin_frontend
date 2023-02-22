@@ -19,33 +19,22 @@
           <!--입력폼-->
           <v-row>
             <v-col>
-              <Field name="title" v-slot="{field, errors}">
-                <v-text-field
-                  v-bind="field"
-                  :error-messages="errors"
-                  v-model="programForm.title"
-                  label="제목"
-                ></v-text-field>
-              </Field>
+              <v-text-field
+                v-model="programForm.title"
+                label="제목"
+              ></v-text-field>
 
-              <Field name="content" v-slot="{field, errors}">
-                <v-textarea
-                  v-bind="field"
-                  :error-messages="errors"
-                  v-model="programForm.content"
-                  label="내용"
-                ></v-textarea>
-              </Field>
+             <v-textarea
+                v-model="programForm.content"
+                label="내용"
+              ></v-textarea>
 
-              <Field name="fee" v-slot="{field, errors}">
-                <v-text-field
-                  v-bind="field"
-                  :error-messages="errors"
-                  type="number"
-                  v-model="programForm.fee"
-                  label="가격"
-                ></v-text-field>
-              </Field>
+              <v-text-field
+                type="number"
+                v-model="programForm.fee"
+                label="가격"
+              ></v-text-field>
+
             </v-col>
           </v-row>
 
@@ -150,8 +139,6 @@ import {useRouter} from "vue-router";
 import consts from "@/consts/const";
 import CreateButtonComponent from "@/components/util/CreateButtonComponent.vue";
 import useMemberInfo from "@/store/useMemberInfo";
-import {Form, Field, useForm} from "vee-validate";
-import * as yup from 'yup'
 import objectMapper from "@/util/objectmapper";
 
 
@@ -219,11 +206,6 @@ const generateCurriculum = () => {
   programForm.value.times = mainCurriculum.value.length
 }
 
-const validations = {
-  title: yup.string().required(),
-  content: yup.string().required(),
-  fee: yup.string().required()
-}
 //프로그램 생성
 const saveProgramForm = async () => {
   //maincurriculum, studentId, ProgramForm(programId, subCategoryId, title, content, times, fee)

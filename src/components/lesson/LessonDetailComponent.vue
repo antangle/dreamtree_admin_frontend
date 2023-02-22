@@ -58,6 +58,7 @@
     <v-row>
       <v-col>
         <v-btn
+          v-if="memberInfo.role == consts.PARENT || memberInfo.role == consts.ADMIN"
           @click="onClickApply"
         >
           신청하기
@@ -69,13 +70,31 @@
 
 <script setup>
 import {bitToDayParser} from "@/util/dayBitParser";
+import useMemberInfo from "@/store/useMemberInfo";
+import consts from "@/consts/const";
+import {postKakaoPayRequest} from "@/apis/kakaoPayAPIS";
 
 const props = defineProps(['lessonInfo', 'programTitle']);
 const emits = defineEmits(['paySucceeded'])
 
+const memberInfo = useMemberInfo().getMemberInfo()
+
+
 /*레슨 신청*/
-const onClickApply = () => {
+const onClickApply = async () => {
   /*todo: 카카오페이 진행 */
+  const kakaoPayDTO = {
+    itemName: props.programTitle,
+    id: memberInfo.id,
+    role: memberInfo.role,
+    quantity: 1,
+    totalAmount: props.lessonInfo.fee,
+    taxFreeAmount: 0
+  }
+
+  const kakaoPayResponse = await postKakaoPayRequest(kakaoPayDTO)
+
+  console.log(kakaoPayResponse);
 
   let payInfo = {}
   /*만약 페이가 정상적으로 완료될 시*/
