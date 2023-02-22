@@ -7,7 +7,7 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
   const memberInfo = ref({id: null, role: null})
 
   const getMemberInfo = () => {
-    return memberInfo.value
+    return {id: 1, role: 'admin'}
   }
 
   const setMemberInfo = (data) => {
