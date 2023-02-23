@@ -171,11 +171,11 @@ const drawer = ref()
 
 const router = useRouter()
 const memberInfo = useMemberInfo().getMemberInfo()
+
 const fetchCategories = async () => {
   const data = await getLayoutInfo(memberInfo.id, memberInfo.role);
 
   categories.value = data.categories
-  member.value = data.memberDTO
 }
 
 onBeforeMount(() => {

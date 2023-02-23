@@ -16,7 +16,6 @@
       </v-col>
       <v-divider></v-divider>
     </v-row>
-
   </v-container>
 </template>
 
@@ -35,7 +34,7 @@ const pages = [
   {title: '카테고리 관리', value: '', role: ['admin']},
   {title: '신고 관리', value: '', role: ['admin']},
   {title: '출석 관리', value: consts.MY_ATTENDANCE_PAGE, role: ['student', 'parent']},
-  {title: '회원 정보 조회 및 수정', value: 'MemberManagementPage', role: ['student', 'parent']},
+  {title: '회원 정보 조회 및 수정', value: consts.MEMBER_MANAGEMENT_PAGE, role: ['student', 'parent']},
 ]
 
 </script>

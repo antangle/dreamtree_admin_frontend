@@ -65,6 +65,7 @@
         </v-btn>
       </v-col>
     </v-row>
+
   </v-container>
 </template>
 
@@ -72,15 +73,14 @@
 import {bitToDayParser} from "@/util/dayBitParser";
 import useMemberInfo from "@/store/useMemberInfo";
 import consts from "@/consts/const";
-import {postKakaoPayRequest} from "@/apis/kakaoPayAPIS";
+import {postKakaoPayReadyRequest} from "@/apis/kakaoPayAPIS";
 
 const props = defineProps(['lessonInfo', 'programTitle']);
 const emits = defineEmits(['paySucceeded'])
 
 const memberInfo = useMemberInfo().getMemberInfo()
 
-
-/*레슨 신청*/
+/*레슨 결제 -> title, fee, memberId, memberRole 필요*/
 const onClickApply = async () => {
   /*todo: 카카오페이 진행 */
   const kakaoPayDTO = {
@@ -92,14 +92,30 @@ const onClickApply = async () => {
     taxFreeAmount: 0
   }
 
-  const kakaoPayResponse = await postKakaoPayRequest(kakaoPayDTO)
+  /*카카오페이 Ready*/
+  const kakaoPayResponse = await postKakaoPayReadyRequest(kakaoPayDTO)
 
-  console.log(kakaoPayResponse);
+  openWinPop(kakaoPayResponse.next_redirect_pc_url, 720, 480)
 
-  let payInfo = {}
-  /*만약 페이가 정상적으로 완료될 시*/
-  emits('paySucceeded', payInfo)
+  var interval = setInterval(() => {
+    if(localStorage.getItem(consts.PAY_NUMBER)){
+      localStorage.removeItem(consts.PAY_NUMBER)
+      onPaymentSuccess()
+      clearInterval(interval)
+    }
+  }, 5000)
 }
+const openWinPop = (uri, width, height) => {
+  return window.open(uri, width, height);
+}
+
+const onPaymentSuccess = () => {
+  /*결제 성공!*/
+  console.log('결제가 완료되었습니다.')
+  emits('paySucceeded')
+}
+
+
 </script>
 
 <style scoped>
