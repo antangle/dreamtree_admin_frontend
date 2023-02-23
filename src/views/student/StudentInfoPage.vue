@@ -45,7 +45,7 @@ const route = useRoute()
 
 const tab = ref()
 
-const studentId = route.query.id
+const studentId = route.params.id
 
 const certificateComponentKey = ref(0)
 
@@ -62,7 +62,7 @@ const moveModify = () => {
 
   const id = studentId
 
-  router.push({name: 'StudentModifyPage', query: {id}})
+  router.push({name: 'StudentModifyPage', params: {id}})
 }
 
 

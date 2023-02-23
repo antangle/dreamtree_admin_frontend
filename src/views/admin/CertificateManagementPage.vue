@@ -3,6 +3,7 @@
   <default-layout>
     <CertificateManagementComponent
       @addSuccess="addSuccess"
+      :id="id"
      :key="componentKey"
     />
   </default-layout>
@@ -14,8 +15,13 @@
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import CertificateManagementComponent from "@/components/student/CertificateManagementComponent.vue";
 import {ref} from "vue";
+import {useRoute} from "vue-router";
 
 const componentKey = ref(0)
+
+const route = useRoute()
+
+const id = route.params.id;
 
 const addSuccess = () => {
 
