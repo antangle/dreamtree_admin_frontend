@@ -255,3 +255,77 @@ export const updateReportStatus = async (id) => {
     return
   }
 }
+
+// 프로그램 리스트
+export const getAdminProgramList = async (result) => {
+
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/program/adminProgram/`, {
+      params: {
+        ...result
+      }
+    })
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}
+
+// 레슨 리스트
+export const getAdminLessonList = async (result) => {
+
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/program/adminLesson/`, {
+      params: {
+        ...result
+      }
+    })
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}
+
+// 프로그램 삭제
+export const removeProgram = async (id) => {
+
+  try {
+    const res = await axios.put(`${consts.DOMAIN}/api/program/removeProgram/${id}`)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}
+
+// 레슨 삭제
+export const removeLesson = async (id) => {
+
+  try {
+    const res = await axios.put(`${consts.DOMAIN}/api/program/removeLesson/${id}`)
+
+    res.data
+  } catch (e) {
+
+    return
+  }
+}
+
+// 프로그램 수정
+
+export const modifyProgram = async (program) => {
+
+  try {
+    const res = await axios.put(`${consts.DOMAIN}/api/program/modiftProgram/`, program)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}

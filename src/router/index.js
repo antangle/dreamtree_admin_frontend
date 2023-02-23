@@ -94,6 +94,12 @@ const routes = [
         name: 'AdminProgramManagementPage',
         component: () => import('@/views/admin/AdminProgramManagementPage.vue')
       },
+      {
+        // 레슨 관리
+        path: 'lesson',
+        name: 'AdminLessonManagementPage',
+        component: () => import('@/views/admin/AdminLessonManagementPage.vue')
+      },
     ]
   },
   {
@@ -101,19 +107,19 @@ const routes = [
     children: [
       {
         // (학생) my 정보 조회
-        path: '',
+        path: ':id',
         name: 'StudentInfoPage',
         component: () => import('@/views/student/StudentInfoPage.vue')
       },
       {
         // (학생) my 자격증 조회
-        path: 'certificate',
+        path: 'certificate/:id',
         name: 'CertificateManagementPage',
         component: () => import('@/views/admin/CertificateManagementPage.vue')
       },
       {
         // (학생) 내 정보 수정
-        path: '/modify',
+        path: '/modify/:id',
         name: 'StudentModifyPage',
         component: () => import('@/views/student/StudentModifyPage.vue')
       },

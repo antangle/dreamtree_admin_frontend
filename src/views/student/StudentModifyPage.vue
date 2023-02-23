@@ -19,7 +19,7 @@ const router = useRouter()
 
 const route = useRoute()
 
-const studentId = route.query.id
+const studentId = route.params.id
 
 // 수정 후 다시 조회로 이동
 const moveInfo = () => {
