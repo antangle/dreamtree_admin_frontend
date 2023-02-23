@@ -136,14 +136,6 @@ const lessonDetailComponentKey = ref(0)
 const route = useRoute()
 const router = useRouter()
 
-
-/*결제 이후*/
-const afterPaySucceed = (payInfo) => {
-  lessonDialog.value = false
-  console.log(payInfo)
-  /*todo: 결제 이후 로직 구현*/
-}
-
 /*목록 버튼 누를 시 리스트 페이지로*/
 const onClickListButton = () => {
   router.push({
@@ -164,6 +156,11 @@ const moveToStudentPage = () => {
   })
 }
 
+/*결제 이후*/
+const afterPaySucceed = () => {
+  lessonDialog.value = false
+  /*todo: 결제 이후 로직 구현*/
+}
 
 /*해당 인덱스의 lesson 상세 정보를 가져오는 dialog를 보여준다.*/
 const onClickLesson = (index) => {
@@ -184,8 +181,6 @@ const fetchProgramDetailInfo = async () => {
 
 const { getMemberInfo } = useMemberInfo()
 const studentId = getMemberInfo().id
-
-console.log(studentId)
 
 onMounted(() => {
   fetchProgramDetailInfo()

@@ -217,6 +217,13 @@ const routes = [
     name: 'LoginPathPage',
     component: () => import('@/views/LoginPathPage.vue'),
   },
+  {
+    path: '/payment/success/:id',
+    name: 'KakaoPaySuccessPage',
+    component: () => import('@/views/kakaopay/KakaoPaySuccess.vue'),
+  },
+
+
 ]
 
 const router = createRouter({

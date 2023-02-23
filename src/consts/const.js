@@ -5,6 +5,9 @@ const consts = {
   ADMIN: "admin",
   STUDENT: "student",
 
+  //kakaopay
+  PAY_NUMBER: "payNumber",
+
   // api
   DOMAIN: DOMAIN,
   IMG_DOMAIN: `${DOMAIN}/api/minio`,
@@ -16,7 +19,8 @@ const consts = {
   LESSON_ADD_PAGE: "LessonAddPage",
   PROGRAM_ADD_PAGE: "ProgramAddPage",
   MY_ATTENDANCE_PAGE: "MyAttendancePage",
-  STUDENT_INFO_PAGE: "StudentInfoPage"
+  STUDENT_INFO_PAGE: "StudentInfoPage",
+  MEMBER_MANAGEMENT_PAGE: "MemberManagementPage",
 }
 
 

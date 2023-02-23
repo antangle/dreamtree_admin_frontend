@@ -182,7 +182,6 @@ const fetchCategories = async () => {
   const data = await getLayoutInfo(memberInfo.value.id, memberInfo.value.role);
 
   categories.value = data.categories
-  member.value = data.memberDTO
 }
 
 onBeforeMount(() => {
