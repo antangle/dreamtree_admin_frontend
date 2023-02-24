@@ -16,9 +16,6 @@
         </v-row>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        {{program}}
-        <hr>
-        {{program.lessonProgressDTO}}
         <v-expansion-panels>
           <v-expansion-panel
             v-for="lesson in program.lessonProgressDTO"

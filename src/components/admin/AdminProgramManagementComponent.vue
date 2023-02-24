@@ -87,6 +87,7 @@
 import {getAdminProgramList, removeProgram} from "@/apis/adminAPIS";
 import {onMounted, ref} from "vue";
 import ProgramCurriculumDayComponent from "@/components/program/ProgramCurriculumDayComponent.vue";
+import {getProgramLessonCount} from "@/apis/StudentAPIS";
 
 const props = defineProps(['pSize', 'pNum', 'searchKeyword'])
 
@@ -102,11 +103,22 @@ const dialog = ref(false)
 
 const deleteProgram = async (id) => {
 
-  await removeProgram(id)
+  const count = await getProgramLessonCount(id)
 
-  dialog.value = !dialog.value
+  if(count < 1) {
+    await removeProgram(id)
 
-  await fetchGetList()
+
+    dialog.value = !dialog.value
+
+    await fetchGetList()
+  } else {
+    alert(count + "개의 레슨으로 인해 삭제할 수 없습니다.")
+
+    dialog.value = !dialog.value
+
+    return
+  }
 }
 
 const fetchGetList = async () => {

@@ -1,18 +1,24 @@
 <template>
 
   <default-layout>
-    <MyProgramListComponent />
+    <MyProgramListComponent
+    @moveProgramModify="moveProgramModify"
+    />
   </default-layout>
 </template>
 
-<script>
+<script setup>
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import MyProgramListComponent from "@/components/common/MyProgramListComponent.vue";
+import {useRouter} from "vue-router";
 
-export default {
-  name: "MyProgramList",
-  components: {MyProgramListComponent, DefaultLayout}
+const router = useRouter()
+
+const moveProgramModify = (id) => {
+
+  router.push({name: 'ProgramModifyPage', params: {id}})
 }
+
 </script>
 
 <style scoped>

@@ -180,3 +180,31 @@ export const myLessonList = async (id) => {
     return
   }
 }
+
+// 프로그램에 레슨 있는지
+export const getProgramLessonCount = async (id) => {
+
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/program/count/${id}`)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}
+
+// 프로그램 수정
+export const modifyProgram = async (program) => {
+
+  console.log("program: ", program)
+
+  try {
+    const res = await axios.put(`${consts.DOMAIN}/api/program/modifyProgram/`, program)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}

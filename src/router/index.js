@@ -147,6 +147,12 @@ const routes = [
         name: 'MyLessonListPage',
         component: () => import('@/views/MyLessonListPage.vue')
       },
+      {
+        // 프로그램 수정
+        path: 'program/modify/:id',
+        name: 'ProgramModifyPage',
+        component: () => import('@/views/program/ProgramModifyPage.vue')
+      },
     ]
   },
   {
