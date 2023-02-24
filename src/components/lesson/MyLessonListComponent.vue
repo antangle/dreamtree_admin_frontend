@@ -16,7 +16,9 @@
         </v-row>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-
+        {{program}}
+        <hr>
+        {{program.lessonProgressDTO}}
         <v-expansion-panels>
           <v-expansion-panel
             v-for="lesson in program.lessonProgressDTO"
@@ -47,6 +49,22 @@
                   </li>
                 </ul>
               </div>
+              <v-btn @click="dialog = !dialog">삭제</v-btn>
+
+              <v-dialog v-model="dialog">
+
+                <v-card>
+                  <v-card-text style="text-align: center">
+                    <div class="v-container">
+                      정말 삭제하시겠습니까?
+                    </div>
+                  </v-card-text>
+                  <v-card-actions class="justify-center">
+                    <v-btn color="grey" @click="() => deleteLesson(lesson.lessonId)"> 확인</v-btn>
+                  </v-card-actions>
+                </v-card>
+
+              </v-dialog>
             </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -60,9 +78,21 @@
 
 import {onMounted, ref} from "vue";
 import {myLessonList, myProgramList} from "@/apis/StudentAPIS";
+import {removeLesson} from "@/apis/adminAPIS";
 
 
 const lessons = ref([])
+
+const dialog = ref(false)
+
+const deleteLesson = async (id) => {
+
+  await removeLesson(id)
+
+  dialog.value = !dialog.value
+
+  await fetchGetList()
+}
 
 const fetchGetList = async () => {
 

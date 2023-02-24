@@ -31,7 +31,7 @@ const route = useRoute()
 const pNum = ref(route.query.page || 1)
 const pSize = ref(route.query.size || 10)
 
-const searchKeyword = ref({ keyword: '', condition: 'total' })
+const searchKeyword = ref({ keyword: route.query.keyword || '', condition: 'total' })
 
 const componentKey = ref(0)
 
@@ -70,6 +70,7 @@ const movePageNum = (pageNum) => {
 
 router.beforeEach((to, from, next)=> {
 
+  console.log("A")
   pSize.value = to.query.size
 
   pNum.value = to.query.page

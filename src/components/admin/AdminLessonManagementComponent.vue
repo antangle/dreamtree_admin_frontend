@@ -46,7 +46,22 @@
                   </li>
                 </ul>
               </div>
-              <v-btn @click="() => removeLesson(lesson.lessonId)">삭제</v-btn>
+              <v-btn @click="dialog = !dialog">삭제</v-btn>
+
+              <v-dialog v-model="dialog">
+
+                <v-card>
+                  <v-card-text style="text-align: center">
+                    <div class="v-container">
+                      정말 삭제하시겠습니까?
+                    </div>
+                  </v-card-text>
+                  <v-card-actions class="justify-center">
+                    <v-btn color="grey" @click="() => deleteLesson(lesson.lessonId)"> 확인</v-btn>
+                  </v-card-actions>
+                </v-card>
+
+              </v-dialog>
             </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -64,12 +79,14 @@
     ></v-pagination>
   </div>
 
+
+
 </template>
 
 <script setup>
 
 import {onMounted, ref} from "vue";
-import {getAdminLessonList} from "@/apis/adminAPIS";
+import {getAdminLessonList, removeLesson} from "@/apis/adminAPIS";
 
 const props = defineProps(['pSize', 'pNum', 'searchKeyword'])
 
@@ -81,9 +98,15 @@ const totalPageSize = ref()
 
 const lessons = ref([])
 
-const removeLesson = async (id) => {
+const dialog = ref(false)
+
+const deleteLesson = async (id) => {
 
   await removeLesson(id)
+
+  dialog.value = !dialog.value
+
+  await fetchGetList()
 }
 
 const fetchGetList = async () => {
@@ -100,7 +123,7 @@ const fetchGetList = async () => {
     page: props.pNum,
     size: props.pSize
   }
-
+  console.log("result: ", result)
   const lessonData = await getAdminLessonList(result);
 
 

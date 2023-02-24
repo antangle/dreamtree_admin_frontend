@@ -7,6 +7,7 @@
     />
     <AdminProgramManagementComponent
       @movePageNum="movePageNum"
+      @moveLessonInfo="moveLessonInfo"
       :pNum="pNum"
       :pSize="pSize"
       :searchKeyword="searchKeyword"
@@ -51,6 +52,19 @@ const clickSearch = (search) => {
       size: 10
     }})
 }
+
+const moveLessonInfo = (keyword) => {
+
+  router.push({ name: 'AdminLessonManagementPage',
+    query: {
+      keyword: keyword,
+      condition: 'total',
+      page: 1,
+      size: 10
+    }
+  })
+}
+
 
 const movePageNum = (pageNum) => {
 
