@@ -216,12 +216,12 @@ const routes = [
   {
     path: '/kakaologin',
     name: 'KakaoLoginPage',
-    component: () => import('@/views/KakaoLoginPage.vue'),
+    component: () => import('@/views/auth/KakaoLoginPage.vue'),
   },
   {
     path: '/loginPath',
     name: 'LoginPathPage',
-    component: () => import('@/views/LoginPathPage.vue'),
+    component: () => import('@/views/auth/LoginPathPage.vue'),
   },
   {
     path: '/payment/success/:id',
