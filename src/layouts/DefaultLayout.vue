@@ -168,6 +168,7 @@ import useMemberInfo from "@/store/useMemberInfo";
 import {getPersonImageUrl} from "@/util/imageUrlGetter";
 import {useCookies} from "vue3-cookies";
 import objectMapper from "@/util/objectmapper";
+import {getStudentInfo} from "@/apis/adminAPIS";
 
 /** 분야 카테고리 **/
 const categories = ref([])
@@ -186,6 +187,18 @@ const role = memberInfo.value.role
 
 console.log("member......", memberInfo)
 
+/** 학생 회원 인증 상태 받아오기 **/
+const fetchAuthState = async () => {
+
+  if (memberInfo.value.role === 'students') {
+    const studentInfo = await getStudentInfo(memberInfo.value.id)
+
+    cookies.set("studentAuthState", studentInfo.authState)
+    console.log(cookies.get("studentAuthState"))
+  }
+
+}
+
 /** 카테고리 정보 받아오기 **/
 const fetchCategories = async () => {
 
@@ -199,6 +212,7 @@ const fetchCategories = async () => {
 
 onBeforeMount(() => {
   fetchCategories()
+  fetchAuthState()
 })
 
 /** 페이지 이동 **/

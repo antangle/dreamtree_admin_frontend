@@ -3,14 +3,14 @@
 
   <div class="button_group horizontal" >
     <v-btn
-      v-if="memberInfo.role == consts.STUDENT || memberInfo.role == consts.ADMIN"
+      v-if="(memberInfo.role == consts.STUDENT && memberInfo.authState == 'yes') || memberInfo.role == consts.ADMIN"
       class="cube1"
       size="large"
       icon="fa-solid fa-plus"
       @click="emits('onClickMoveProgramAddPage')"
     ></v-btn>
     <v-btn
-      v-if="memberInfo.role == consts.STUDENT || memberInfo.role == consts.ADMIN"
+      v-if="(memberInfo.role == consts.STUDENT && memberInfo.authState == 'yes') || memberInfo.role == consts.ADMIN"
       style="margin-left: 8px; margin-right: 8px"
       class="cube2"
       size="large"

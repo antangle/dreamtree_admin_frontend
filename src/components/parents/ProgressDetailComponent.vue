@@ -31,11 +31,16 @@
       <v-col>{{ props.info.fee }} 원</v-col>
     </v-row>
 
-    <v-row justify="end">
-      <v-col cols="1" offset="10"><p>상태</p></v-col>
+    <v-row justify="space-between">
+      <v-col cols="2"><p>상태</p></v-col>
+      <v-col><v-chip>{{ props.info.state }}</v-chip></v-col>
+
+      <v-col cols="2"><p>결제 상태</p></v-col>
       <v-col>
-        <v-chip>{{ props.info.state }}</v-chip>
+        <v-btn v-if="props.info.payStatus === 'request'" @click="onClickGetKakaoPay" variant="flat" color="error">{{ props.info.payStatus }}</v-btn>
+        <v-chip v-if="props.info.payStatus != 'request'">{{ props.info.payStatus }}</v-chip>
       </v-col>
+
     </v-row>
   </v-container>
 </template>
@@ -49,6 +54,10 @@ const setLocalDateString = (str) => {
 
   const date = new Date(str)
   return date.toLocaleDateString()
+
+}
+
+const onClickGetKakaoPay = () => {
 
 }
 

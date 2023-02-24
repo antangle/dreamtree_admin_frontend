@@ -2,14 +2,13 @@
 
   <default-layout>
 
-
     <v-tabs
       v-model="tab"
       bg-color="transparent"
       grow
     >
-      <v-tab value="1">받은메일</v-tab>
-      <v-tab value="2">보낸메일</v-tab>
+      <v-tab value="1">보낸 메일</v-tab>
+      <v-tab value="2">받은 메일</v-tab>
     </v-tabs>
 
     <v-window v-model="tab">
@@ -35,7 +34,9 @@
     </v-window>
 
     <div class="v-container">
-      <AddMailComponent @postMail="postMail"/>
+      <AddMailComponent
+        @postMail="postMail"
+      />
     </div>
   </default-layout>
 

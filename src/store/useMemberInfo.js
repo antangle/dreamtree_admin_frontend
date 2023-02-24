@@ -10,6 +10,7 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
     id: null,
     role: null,
     email: null,
+    authState: 'no',
     nickname: null,
     profileImage: null,
     thumbnailImage: null
@@ -26,6 +27,7 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
     memberInfo.value.role = cookies.get("loginRole")
     memberInfo.value.email = cookies.get('loginEmail')
     memberInfo.value.nickname = cookies.get('loginNickname')
+    memberInfo.value.authState = cookies.get('studentAuthState')
     memberInfo.value.profileImage = cookies.get('loginProfileImg')
     memberInfo.value.thumbnailImage = cookies.get('loginThumbnailImg')
 
@@ -38,6 +40,7 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
     memberInfo.value.role = null
     memberInfo.value.email = null
     memberInfo.value.nickname = null
+    memberInfo.value.authState = 'no'
     memberInfo.value.profileImage = null
     memberInfo.value.thumbnailImage = null
 
