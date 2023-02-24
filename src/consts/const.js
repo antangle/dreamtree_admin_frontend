@@ -21,6 +21,7 @@ const consts = {
   MY_ATTENDANCE_PAGE: "MyAttendancePage",
   STUDENT_INFO_PAGE: "StudentInfoPage",
   MEMBER_MANAGEMENT_PAGE: "MemberManagementPage",
+  LESSON_APPLY_PAGE: "LessonApplyPage"
 }
 
 

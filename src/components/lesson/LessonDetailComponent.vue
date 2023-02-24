@@ -57,15 +57,18 @@
 
     <v-row>
       <v-col>
-        <v-btn
-          v-if="memberInfo.role == consts.PARENT || memberInfo.role == consts.ADMIN"
+<!--
+  todo:        v-if="memberInfo.role == consts.PARENT || memberInfo.role == consts.ADMIN"
           @click="onClickApply"
-        >
-          신청하기
+-->
+        <v-btn
+          @click="() => onClickApplyButton(lessonInfo, programTitle)"
+          >
+          문의하기
         </v-btn>
       </v-col>
     </v-row>
-
+    {{lessonInfo}}
   </v-container>
 </template>
 
@@ -76,9 +79,15 @@ import consts from "@/consts/const";
 import {postKakaoPayReadyRequest} from "@/apis/kakaoPayAPIS";
 
 const props = defineProps(['lessonInfo', 'programTitle']);
-const emits = defineEmits(['paySucceeded'])
+const emits = defineEmits(['paySucceeded', 'moveLessonApplyPage'])
 
 const memberInfo = useMemberInfo().getMemberInfo()
+
+
+const onClickApplyButton = (lessonInfo, programTitle) => {
+  if(lessonInfo.progressList.length)
+  emits('moveLessonApplyPage', lessonInfo, programTitle)
+}
 
 /*레슨 결제 -> title, fee, memberId, memberRole 필요*/
 const onClickApply = async () => {

@@ -7,4 +7,5 @@ export default function objectMapper(to, from){
       to[key] = from[key]
     }
   }
+  return null
 }
