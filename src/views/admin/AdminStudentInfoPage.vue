@@ -1,29 +1,28 @@
 <template>
-
-  <StudentInfoComponent
-    @moveModify="moveModify"
-    @moveMemberManagement="moveMemberManagement"
-    :id="studentId"
-  />
-
+  <DefaultLayout>
+    <AdminStudentInfoComponent
+      @moveModify="moveModify"
+      @moveMemberManagement="moveMemberManagement"
+      :id="studentId"
+    />
+  </DefaultLayout>
 </template>
 
 <script setup>
 
 import {useRoute, useRouter} from "vue-router";
 import StudentInfoComponent from "@/components/admin/AdminStudentInfoComponent.vue";
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
 const router = useRouter()
 
 const route = useRoute()
 
-const studentId = route.query.id
+const studentId = route.params.id
 
 const moveModify = () => {
 
-  const id = studentId
-
-  router.push({name: 'StudentModifyPage', query: {id}})
+  router.push({name: 'StudentModifyPage', params: {id: studentId}})
 }
 
 const moveMemberManagement = () => {

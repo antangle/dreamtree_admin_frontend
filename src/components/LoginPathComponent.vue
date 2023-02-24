@@ -2,9 +2,7 @@
   <v-container>
     <v-row>
         <v-col>
-          <v-img
-            src="public/parents.png"
-            width="200"
+          <v-img src="public/parents.png" width="200"
             @click="() => pathValue = 'student'"
           >
           </v-img>
@@ -16,9 +14,7 @@
         </v-col>
 
         <v-col>
-          <v-img
-            src="public/students.png"
-            width="180"
+          <v-img src="public/students.png" width="180"
             @click="() => pathValue = 'parent'"
           >
           </v-img>

@@ -13,7 +13,8 @@
     <v-window v-model="tab">
       <v-window-item value="1">
         <SearchComponent @clickSearch="clickSearch" />
-        <MemberManagementComponent
+
+        <StudentAdminComponent
           @movePageNum="movePageNum"
           @moveStudentInfo="moveStudentInfo"
           @moveAuthManagementPage="moveAuthManagementPage"
@@ -25,12 +26,14 @@
       </v-window-item>
 
       <v-window-item value="2">
+        <SearchComponent @clickSearch="clickSearch"/>
         <ParentAdminComponent
-          @movePage="moveMemberAdminPage"
+          @movePageNum="movePageNum"
           @onClickMoveInfoModifyPage="moveInfoModifyPage"
           :searchCondition="searchCondition"
           :pNum="pNum"
           :pSize="pSize"
+          :key="componentKey"
         />
       </v-window-item>
 
@@ -45,8 +48,8 @@ import ParentAdminComponent from "@/components/ParentAdminComponent.vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import {ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
-import MemberManagementComponent from "@/components/admin/MemberManagementComponent.vue";
 import SearchComponent from "@/components/common/SearchComponent.vue";
+import StudentAdminComponent from "@/components/admin/StudentAdminComponent.vue";
 
 const tab = ref()
 
@@ -59,23 +62,10 @@ const pSize = ref(route.query.size || 10)
 
 const searchCondition = ref({ keyword: '', condition: '' })
 
-const searchKeyword = ref({ keyword: '', condition: 'total' })
+const searchKeyword = ref({ keyword: '', condition: ['total', 'email'] })
 
 const componentKey = ref(0)
 
-
-const moveMemberAdminPage = (pageNum) => {
-
-  pNum.value = pageNum
-
-  router.push({ name: "MemberAdminPage",
-    query: {
-      ...searchCondition.value,
-      page: pNum.value,
-      size: pSize.value
-    }
-  })
-}
 
 const moveAuthManagementPage = () => {
 
@@ -84,7 +74,12 @@ const moveAuthManagementPage = () => {
 
 const moveInfoModifyPage = (id) => {
 
-  router.push({ name: 'InfoModifyPage' , params: {id: id} })
+  router.push({ name: 'InfoModifyPage' ,
+    query: {
+      page: pNum.value,
+      size: pSize.value
+    },
+    params: {id: id} })
 
 }
 
@@ -97,7 +92,7 @@ const clickSearch = (search) => {
 
   searchKeyword.value.condition = search.condition
 
-  router.push({name: "MemberManagementPage",
+  router.push({name: "MemberAdminPage",
     query: {
       keyword: searchKeyword.value.keyword,
       condition: searchKeyword.value.condition,
@@ -123,12 +118,12 @@ const moveStudentInfo = (id) => {
 
   console.log("info")
 
-  router.push({ name: "StudentInfoPage",
+  router.push({ name: "AdminStudentInfoPage",
     query: {
-      id: id,
       page: pNum.value,
       size: pSize.value
-    }
+    },
+    params: {id: id}
   })
 }
 

@@ -12,7 +12,7 @@
 
 <script setup>
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import AdminReportManagementComponent from "@/components/admin/AdminReportManagementComponent.vue";
+import AdminReportManagementComponent from "@/components/admin/ReportAdminComponent.vue";
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
 

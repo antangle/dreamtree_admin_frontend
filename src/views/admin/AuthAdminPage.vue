@@ -28,8 +28,8 @@ import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import SearchComponent from "@/components/common/SearchComponent.vue";
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
-import CollegeAuthManagementComponent from "@/components/admin/CollegeAuthManagementComponent.vue";
-import CertificateAuthManagementComponent from "@/components/admin/CertificateAuthManagementComponent.vue";
+import CollegeAuthManagementComponent from "@/components/admin/CollegeAuthAdminComponent.vue";
+import CertificateAuthManagementComponent from "@/components/admin/CertificateAuthAdminComponent.vue";
 
 const router = useRouter()
 

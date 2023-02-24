@@ -11,7 +11,7 @@
         nav
       >
         <v-list-item
-          :prepend-avatar="getPersonImageUrl(member.profileImgUrl)"
+          :prepend-avatar="getPersonImageUrl(member.profileImage)"
           :title="member.nickname"
           :subtitle="member.email"
         ></v-list-item>
@@ -19,13 +19,13 @@
         <v-list-item
           prepend-icon="fa-solid fa-user"
           title="마이페이지"
-          @click="() => movePage('MyPage')"
+          @click="() => movePageWithPathValue('MyPage', role)"
         ></v-list-item>
 
         <v-list-item
           prepend-icon="fa-solid fa-envelope"
           title="쪽지함"
-          @click="() => movePage('StudentMailPage')"
+          @click="() => movePage('MailPage')"
         ></v-list-item>
 
         <v-list-item
@@ -167,22 +167,34 @@ import consts from "@/consts/const";
 import useMemberInfo from "@/store/useMemberInfo";
 import {getPersonImageUrl} from "@/util/imageUrlGetter";
 import {useCookies} from "vue3-cookies";
+import objectMapper from "@/util/objectmapper";
 
 /** 분야 카테고리 **/
 const categories = ref([])
-const member = ref({})
+const member = ref({
+  profileImage: null,
+  nickname: null,
+  id: null,
+  email: null,
+  role: null
+})
 const drawer = ref()
 const router = useRouter()
 const { cookies } = useCookies()
 const memberInfo = ref(useMemberInfo().getMemberInfo())
+const role = memberInfo.value.role
 
 console.log("member......", memberInfo)
 
 /** 카테고리 정보 받아오기 **/
 const fetchCategories = async () => {
-  const data = await getLayoutInfo(memberInfo.value.id, memberInfo.value.role);
+
+  const data = await getLayoutInfo();
 
   categories.value = data.categories
+
+  objectMapper(member.value, memberInfo.value);
+
 }
 
 onBeforeMount(() => {
@@ -191,7 +203,12 @@ onBeforeMount(() => {
 
 /** 페이지 이동 **/
 const movePage = (page) => {
-  router.push({name: page})
+  router.push({ name: page })
+}
+
+/** 회원 유형(대학생/학부모)에 따라 페이지 이동 **/
+const movePageWithPathValue = (page, role) => {
+  router.push({name: page, query: {path: role} })
 }
 
 /** 클릭시 ProgramListPage 이동 **/
@@ -216,13 +233,27 @@ const onClickLogout = async () => {
       await window.Kakao.Auth.logout()
       // 쿠키 삭제 및 store/memberInfo 변경
       console.log("After...", window.Kakao.Auth.getAccessToken())
+
       cookies.remove("loginId")
       cookies.remove("loginRole")
+      cookies.remove("loginEmail")
+      cookies.remove('loginNickname')
+      cookies.remove('loginProfileImg')
+      cookies.remove('loginThumbnailImg')
+
       useMemberInfo().initMemberInfo()
       memberInfo.value = useMemberInfo().getMemberInfo()
+      await router.push({ name: 'HomePage' })
 
     } catch (error) { console.log(error) }
   } else {
+
+    cookies.remove("loginId")
+    cookies.remove("loginRole")
+    cookies.remove("loginEmail")
+    cookies.remove('loginNickname')
+    cookies.remove('loginProfileImg')
+    cookies.remove('loginThumbnailImg')
 
     alert("로그인이 필요합니다!")
 

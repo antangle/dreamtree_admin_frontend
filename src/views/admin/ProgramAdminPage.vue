@@ -5,7 +5,7 @@
       @clickSearch="clickSearch"
       :conditions="conditions"
     />
-    <AdminLessonManagementComponent
+    <AdminProgramManagementComponent
       @movePageNum="movePageNum"
       :pNum="pNum"
       :pSize="pSize"
@@ -13,16 +13,14 @@
       :key="componentKey"
     />
   </default-layout>
-
 </template>
 
 <script setup>
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import AdminLessonManagementComponent from "@/components/admin/AdminLessonManagementComponent.vue";
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
+import AdminProgramManagementComponent from "@/components/admin/ProgramAdminComponent.vue";
 import SearchComponent from "@/components/common/SearchComponent.vue";
-
 
 const router = useRouter()
 const route = useRoute()
@@ -45,7 +43,7 @@ const clickSearch = (search) => {
 
   searchKeyword.value.condition = search.condition
 
-  router.push({name: "AdminLessonManagementPage",
+  router.push({name: "AdminProgramManagementPage",
     query: {
       keyword: searchKeyword.value.keyword,
       condition: searchKeyword.value.condition,
@@ -58,7 +56,7 @@ const movePageNum = (pageNum) => {
 
   pNum.value = pageNum
 
-  router.push({ name: "AdminLessonManagementPage",
+  router.push({ name: "AdminProgramManagementPage",
     query: {
       ...searchKeyword.value,
       page: pNum.value,
@@ -78,11 +76,10 @@ router.beforeEach((to, from, next)=> {
 
   searchKeyword.value.condition = to.query.condition || 'total'
 
-  if(to.name == 'AdminLessonManagementPage') componentKey.value++
+  if(to.name == 'AdminProgramManagementPage') componentKey.value++
 
   next()
 })
-
 </script>
 
 <style scoped>

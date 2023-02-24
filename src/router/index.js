@@ -14,146 +14,108 @@ const routes = [
       {
         path: '',
         name: 'MyPage',
-        component: () => import('@/views/admin/MyPage.vue'),
+        component: () => import('@/views/MyPage.vue'),
+      },
+
+      /** 마이페이지 공통 **/
+      // 출석 현황 조회
+      {
+        path: 'attendance',
+        name: consts.MY_ATTENDANCE_PAGE,
+        component: () => import('@/views/attendance/MyAttendancePage.vue')
       },
       {
-      path: 'member',
-      name: 'MemberAdminPage',
-      component: () => import('@/views/admin/MemberAdminPage.vue')
+        // 쪽지
+        path: 'mail',
+        name: 'MailPage',
+        component: () => import('@/views/MailPage.vue')
+      },
+
+      /** 대학생 마이페이지 **/
+      // 대학생 정보 조회
+      {
+        path: 'studentInfo/:id',
+        name: 'StudentInfoPage',
+        component: () => import('@/views/student/StudentInfoPage.vue'),
       },
       {
-        path: 'parent',
-        name: 'ParentMyPage',
-        component: () => import('@/views/parents/ParentMyPage.vue'),
+        // 프로그램 (대학생)
+        path: 'program/:id',
+        name: 'MyProgramListPage',
+        component: () => import('@/views/MyProgramListPage.vue')
       },
+
+      /** 학부모 마이페이지 **/
+      // 학부모 정보 조회
       {
         path: 'parentInfo/:id',
         name: 'ParentInfoPage',
         component: () => import('@/views/parents/ParentInfoPage.vue'),
       },
+      // 수강 중인 레슨 (학부모)
       {
         path: 'progress/:id',
         name: 'ProgressListPage',
         component: () => import('@/views/parents/ProgressListPage.vue'),
       },
+
+      /** 관리자 마이페이지 **/
       {
-        path: 'attendance',
-        name: consts.MY_ATTENDANCE_PAGE,
-        component: () => import('@/views/attendance/MyAttendencePage.vue'),
-      },
+        path: 'admin',
+        children: [
+          {
+            // 전체 회원 리스트
+            path: 'members',
+            name: 'MemberAdminPage',
+            component: () => import('@/views/admin/MemberAdminPage.vue')
+          },
+          {
+            // Admin 학생 정보 상세 조회
+            path: 'studentInfo/:id',
+            name: 'AdminStudentInfoPage',
+            component: () => import('@/views/admin/AdminStudentInfoPage.vue')
+          },
+          {
+            // 인증 요청 리스트
+            path: 'auth',
+            name: 'AuthAdminPage',
+            component: () => import('@/views/admin/AuthAdminPage.vue')
+          },
+          {
+            // 대학 인증 요청 조회
+            path: 'college',
+            name: 'CollegeAuthInfoPage',
+            component: () => import('@/views/admin/CollegeAuthInfoPage.vue')
+          },
+          {
+            // 자격/수상 인증 요청 조회
+            path: 'certificate',
+            name: 'CertificateAuthInfoPage',
+            component: () => import('@/views/admin/CertificateAuthInfoPage.vue')
+          },
+          {
+            // 신고 관리
+            path: 'report',
+            name: 'ReportAdminPage',
+            component: () => import('@/views/admin/ReportAdminPage.vue')
+          },
+          {
+            // 프로그램 관리
+            path: 'program',
+            name: 'ProgramAdminPage',
+            component: () => import('@/views/admin/ProgramAdminPage.vue')
+          },
+          {
+            // 레슨 관리
+            path: 'lesson',
+            name: 'LessonAdminPage',
+            component: () => import('@/views/admin/LessonAdminPage.vue')
+          },
+        ]
+      }
     ]
   },
-  {
-    path: '/mypage/admin',
-    children: [
-      {
-        // (admin) 마이페이지 첫 화면
-        path: '',
-        name: 'MyPageAdmin',
-        component: () => import('@/views/MyPageAdmin.vue'),
-      },
-      {
-        // 전체 학생 리스트
-        path: 'member/management',
-        name: 'MemberManagementPage',
-        component: () => import('@/views/MemberManagementPage.vue')
-      },
-      {
-        // Admin 학생 조회
-        path: 'member/student',
-        name: 'AdminStudentInfoPage',
-        component: () => import('@/views/admin/AdminStudentInfoPage.vue')
-      },
-      {
-        // 인증 요청 리스트
-        path: 'auth/management',
-        name: 'AuthManagementPage',
-        component: () => import('@/views/admin/AuthManagementPage.vue')
-      },
-      {
-        // 대학 인증 요청 조회
-        path: 'college',
-        name: 'CollegeAuthInfoPage',
-        component: () => import('@/views/admin/CollegeAuthInfoPage.vue')
-      },
-      {
-        // 자격/수상 인증 요청 조회
-        path: 'certificate',
-        name: 'CertificateAuthInfoPage',
-        component: () => import('@/views/admin/CertificateAuthInfoPage.vue')
-      },
-      {
-        // 신고 관리
-        path: 'report',
-        name: 'AdminReportManagementPage',
-        component: () => import('@/views/admin/AdminReportManagementPage.vue')
-      },
-      {
-        // 프로그램 관리
-        path: 'program',
-        name: 'AdminProgramManagementPage',
-        component: () => import('@/views/admin/AdminProgramManagementPage.vue')
-      },
-      {
-        // 레슨 관리
-        path: 'lesson',
-        name: 'AdminLessonManagementPage',
-        component: () => import('@/views/admin/AdminLessonManagementPage.vue')
-      },
-    ]
-  },
-  {
-    path: '/mypage/student',
-    children: [
-      {
-        // (학생) my 정보 조회
-        path: ':id',
-        name: 'StudentInfoPage',
-        component: () => import('@/views/student/StudentInfoPage.vue')
-      },
-      {
-        // (학생) my 자격증 조회
-        path: 'certificate/:id',
-        name: 'CertificateManagementPage',
-        component: () => import('@/views/admin/CertificateManagementPage.vue')
-      },
-      {
-        // (학생) 내 정보 수정
-        path: '/modify/:id',
-        name: 'StudentModifyPage',
-        component: () => import('@/views/student/StudentModifyPage.vue')
-      },
-      {
-        // (학생) 쪽지
-        path: 'mail',
-        name: 'StudentMailPage',
-        component: () => import('@/views/student/StudentMailPage.vue')
-      },
-      {
-        // 신고
-        path: 'report',
-        name: 'StudentReportPage',
-        component: () => import('@/views/ReportPage.vue')
-      },
-      {
-        // 프로그램
-        path: 'program',
-        name: 'MyProgramListPage',
-        component: () => import('@/views/MyProgramListPage.vue')
-      },
-      {
-        // 레슨
-        path: 'lesson',
-        name: 'MyLessonListPage',
-        component: () => import('@/views/MyLessonListPage.vue')
-      },
-    ]
-  },
-  {
-    path: '/test',
-    name: 'TestCal',
-    component: () => import('@/views/TestCal.vue')
-  },
+
   {
     path: '/request',
     children: [
@@ -204,7 +166,7 @@ const routes = [
     children: [{
         path: 'form',
         name: consts.LESSON_ADD_PAGE,
-        component: () => import('@/views/lesson/LessonAddPage.vue')
+        component: () => import('@/views/program/LessonAddPage.vue')
       },
     ]
   },
@@ -223,13 +185,6 @@ const routes = [
     name: 'LoginPathPage',
     component: () => import('@/views/auth/LoginPathPage.vue'),
   },
-  {
-    path: '/payment/success/:id',
-    name: 'KakaoPaySuccessPage',
-    component: () => import('@/views/kakaopay/KakaoPaySuccess.vue'),
-  },
-
-
 ]
 
 const router = createRouter({

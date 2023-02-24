@@ -4,11 +4,6 @@
 
     <v-list-subheader>Student Admin</v-list-subheader>
 
-    <v-list-subheader
-      style="float: right;"
-      @click="() => emits('moveAuthManagementPage')"
-    >{{authCount}}인증 요청>></v-list-subheader>
-
     <v-list-item
       v-for="student in students"
       :key="student.studentId"
