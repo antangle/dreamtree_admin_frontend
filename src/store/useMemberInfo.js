@@ -6,7 +6,14 @@ const {cookies} = useCookies()
 
 const useMemberInfo = defineStore('useMemberInfo',() => {
 
-  const memberInfo = ref({id: null, role: null, email: "hello@naver.com"})
+  const memberInfo = ref({
+    id: null,
+    role: null,
+    email: null,
+    nickname: null,
+    profileImage: null,
+    thumbnailImage: null
+  })
 
   const getMemberInfo = () => {
     if(!memberInfo.value.id) setMemberInfo()
@@ -17,6 +24,10 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
 
     memberInfo.value.id = cookies.get("loginId")
     memberInfo.value.role = cookies.get("loginRole")
+    memberInfo.value.email = cookies.get('loginEmail')
+    memberInfo.value.nickname = cookies.get('loginNickname')
+    memberInfo.value.profileImage = cookies.get('loginProfileImg')
+    memberInfo.value.thumbnailImage = cookies.get('loginThumbnailImg')
 
     console.log("set memberInfo...", memberInfo.value)
   }
@@ -25,9 +36,14 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
 
     memberInfo.value.id = null
     memberInfo.value.role = null
+    memberInfo.value.email = null
+    memberInfo.value.nickname = null
+    memberInfo.value.profileImage = null
+    memberInfo.value.thumbnailImage = null
 
-    console.log("set memberInfo...", memberInfo.value)
+    console.log("init memberInfo...", memberInfo.value)
   }
+
   return {getMemberInfo, setMemberInfo, initMemberInfo}
 })
 

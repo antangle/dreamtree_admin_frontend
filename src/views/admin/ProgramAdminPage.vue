@@ -20,7 +20,7 @@
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
-import AdminProgramManagementComponent from "@/components/admin/AdminProgramManagementComponent.vue";
+import AdminProgramManagementComponent from "@/components/admin/ProgramAdminComponent.vue";
 import SearchComponent from "@/components/common/SearchComponent.vue";
 
 const router = useRouter()

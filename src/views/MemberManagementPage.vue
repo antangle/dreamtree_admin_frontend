@@ -16,11 +16,11 @@
 
 <script setup>
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import MemberManagementComponent from "@/components/admin/MemberManagementComponent.vue";
+import MemberManagementComponent from "@/components/admin/StudentAdminComponent.vue";
 import {ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import SearchComponent from "@/components/common/SearchComponent.vue";
-import AuthMamagementComponent from "@/components/admin/CollegeAuthManagementComponent.vue";
+import AuthMamagementComponent from "@/components/admin/CollegeAuthAdminComponent.vue";
 
 const router = useRouter()
 

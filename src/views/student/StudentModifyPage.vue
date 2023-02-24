@@ -12,7 +12,7 @@
 <script setup>
 
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import StudentModifyComponent from "@/components/admin/StudentModifyComponent.vue";
+import StudentModifyComponent from "@/components/student/StudentModifyComponent.vue";
 import {useRoute, useRouter} from "vue-router";
 
 const router = useRouter()

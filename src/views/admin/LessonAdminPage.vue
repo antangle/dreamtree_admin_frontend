@@ -18,7 +18,7 @@
 
 <script setup>
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import AdminLessonManagementComponent from "@/components/admin/AdminLessonManagementComponent.vue";
+import AdminLessonManagementComponent from "@/components/admin/LessonAdminComponent.vue";
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
 import SearchComponent from "@/components/common/SearchComponent.vue";
