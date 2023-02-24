@@ -58,15 +58,12 @@ const routes = [
         name: 'ProgressListPage',
         component: () => import('@/views/parents/ProgressListPage.vue'),
       },
-<<<<<<< HEAD
       {
         // 프로그램 수정
         path: 'program/modify/:id',
         name: 'ProgramModifyPage',
         component: () => import('@/views/program/ProgramModifyPage.vue')
       },
-=======
-
       /** 관리자 마이페이지 **/
       {
         path: 'admin',
@@ -121,7 +118,6 @@ const routes = [
           },
         ]
       }
->>>>>>> origin/route_dev
     ]
   },
 
