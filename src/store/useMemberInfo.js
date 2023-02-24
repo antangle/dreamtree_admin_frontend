@@ -6,7 +6,7 @@ const {cookies} = useCookies()
 
 const useMemberInfo = defineStore('useMemberInfo',() => {
 
-  const memberInfo = ref({id: null, role: null})
+  const memberInfo = ref({id: null, role: null, email: "hello@naver.com"})
 
   const getMemberInfo = () => {
     if(!memberInfo.value.id) setMemberInfo()

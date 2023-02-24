@@ -212,6 +212,11 @@ const routes = [
         name: consts.LESSON_ADD_PAGE,
         component: () => import('@/views/lesson/LessonAddPage.vue')
       },
+      {
+        path: 'apply',
+        name: consts.LESSON_APPLY_PAGE,
+        component: () => import('@/views/lesson/LessonApplyPage.vue')
+      }
     ]
   },
   {

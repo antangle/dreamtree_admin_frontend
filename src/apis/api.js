@@ -120,3 +120,46 @@ export const deleteMinioImage = async (fileNameList) => {
     return
   }
 }
+export const getLessonApplyInfo = async (lessonId) => {
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/lesson/apply`, {
+      params: {
+        lessonId: lessonId
+      }
+    })
+    return res.data
+  } catch (e){
+    console.log(e)
+    return
+  }
+}
+
+/*
+*   const addMail = {
+    toEmail: studentEmail.value,
+    fromEmail: memberInfo.email,
+    title: requestForm.value.title,
+    content: makeContent(requestForm.value)
+  }
+
+  const progressDTO = {
+    childName: requestForm.value.childName,
+    parent_id: requestForm.value.parent_id,
+    lesson_id: route.query.lesson_id
+  }
+*/
+export const postLessonApply = async (addMail, progressDTO) => {
+  try {
+    const dto = {
+      mail: addMail,
+      progress: progressDTO
+    }
+
+    const res = await axios.post(`${consts.DOMAIN}/api/lesson/apply`, dto)
+    return res.data
+  } catch (e){
+    console.log(e)
+    return
+  }
+}
+

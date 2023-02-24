@@ -18,6 +18,7 @@ const router = useRouter()
 const movePage = (page) => {
 
   router.push({name: page})
+
 }
 
 </script>

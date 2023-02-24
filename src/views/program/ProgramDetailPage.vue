@@ -43,6 +43,7 @@
             :key="lessonDetailComponentKey"
             @offDialog="lessonDialog = false"
             @paySucceeded="afterPaySucceed"
+            @moveLessonApplyPage="moveToLessonApplyPage"
           />
         </v-dialog>
       </div>
@@ -146,6 +147,18 @@ const onClickListButton = () => {
   })
 }
 
+const moveToLessonApplyPage = (lessonInfo, programTitle) => {
+  console.log(lessonInfo)
+  console.log(lessonInfo)
+  router.push({
+    name: consts.LESSON_APPLY_PAGE,
+    query: {
+      title: programTitle,
+      lessonId: lessonInfo.lessonId
+    }
+  })
+}
+
 const moveToStudentPage = () => {
   console.log(programDetailInfo.value)
   router.push({
@@ -180,7 +193,6 @@ const fetchProgramDetailInfo = async () => {
 }
 
 const { getMemberInfo } = useMemberInfo()
-const studentId = getMemberInfo().id
 
 onMounted(() => {
   fetchProgramDetailInfo()
