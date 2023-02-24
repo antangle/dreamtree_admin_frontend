@@ -107,12 +107,17 @@ const getKakaoAccount =  async () => {
 
       }
 
+      cookies.set("loginId", loginInfo.id)
+      cookies.set("loginRole", loginInfo.memberValue)
+      cookies.set("loginEmail", data.value.userInfoDTO.account_email)
+      cookies.set("loginNickname", loginInfo.nickname)
+      cookies.set("loginProfileImg", loginInfo.profileImgUrl)
+      cookies.set("loginThumbnailImg", loginInfo.thumbnailImgUrl)
+      console.log("id.....", cookies.get("loginId"))
+
       useMemberInfo().setMemberInfo()
       memberInfo.value = useMemberInfo().getMemberInfo()
 
-      cookies.set("loginId", loginInfo.id)
-      cookies.set("loginRole", loginInfo.memberValue)
-      console.log("id.....", cookies.get("loginId"))
       await router.push({name: 'HomePage'})
 
     },
