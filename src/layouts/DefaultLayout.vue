@@ -18,13 +18,13 @@
 
         <v-list-item
           prepend-icon="fa-solid fa-user"
-          title="My Page"
+          title="마이페이지"
           @click="() => movePage('MyPage')"
         ></v-list-item>
 
         <v-list-item
           prepend-icon="fa-solid fa-envelope"
-          title="Mailbox"
+          title="쪽지함"
           @click="() => movePage('StudentMailPage')"
         ></v-list-item>
 
@@ -50,6 +50,7 @@
         <v-list-item
           prepend-icon="fa-solid fa-user-plus"
           title="회원가입"
+          @click="movePage('LoginPathPage')"
         ></v-list-item>
 
       </v-list>
