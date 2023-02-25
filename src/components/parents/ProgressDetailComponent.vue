@@ -53,7 +53,6 @@ import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['info'])
 const emits = defineEmits(['paySucceeded'])
-const memberInfo = useMemberInfo().getMemberInfo()
 
 // 날짜 yyyy.MM.DD 변환 함수
 const setLocalDateString = (str) => {
@@ -63,15 +62,16 @@ const setLocalDateString = (str) => {
 
 }
 
-/*레슨 결제 -> title, fee, memberId, memberRole 필요*/
 const onClickGetKakaoPay = async () => {
-  /*todo: 카카오페이 진행 fee, title 필요 */
+  const memberInfo = useMemberInfo().getMemberInfo()
+
+  /*todo: 카카오페이 진행 */
   const kakaoPayDTO = {
-    itemName: props.programTitle,
+    itemName: props.info.title,
     id: memberInfo.id,
     role: memberInfo.role,
     quantity: 1,
-    totalAmount: props.lessonInfo.fee,
+    totalAmount: props.info.fee,
     taxFreeAmount: 0
   }
 
@@ -87,7 +87,17 @@ const onClickGetKakaoPay = async () => {
       clearInterval(interval)
     }
   }, 5000)
+
+
+/*  /!*3분후 clear*!/
+  setTimeout(() => {
+    if(!localStorage.getItem(consts.PAY_NUMBER)){
+      alert('다시 결제를 진행해주세요')
+    }
+    clearInterval(interval)
+  }, 180000)*/
 }
+
 const openWinPop = (uri, width, height) => {
   return window.open(uri, width, height);
 }

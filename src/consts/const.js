@@ -21,7 +21,10 @@ const consts = {
   MY_ATTENDANCE_PAGE: "MyAttendancePage",
   STUDENT_INFO_PAGE: "StudentInfoPage",
   MEMBER_MANAGEMENT_PAGE: "MemberManagementPage",
-  LESSON_APPLY_PAGE: "LessonApplyPage"
+  LESSON_APPLY_PAGE: "LessonApplyPage",
+  KAKAOPAY_SUCCESS_PAGE: "KakaoPaySuccessPage",
+  KAKAOPAY_CANCEL_PAGE: "KakaoPayCancelPage",
+  KAKAOPAY_FAIL_PAGE: "KakaoPayFailPage",
 }
 
 

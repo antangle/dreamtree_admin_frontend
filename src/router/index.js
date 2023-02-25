@@ -195,6 +195,26 @@ const routes = [
     name: 'LoginPathPage',
     component: () => import('@/views/auth/LoginPathPage.vue'),
   },
+  {
+    path: '/payment',
+    children: [
+      {
+        path: 'success/:id',
+        name: consts.KAKAOPAY_SUCCESS_PAGE,
+        component: () => import('@/views/kakaopay/KakaoPaySuccess.vue')
+      },
+      {
+        path: 'fail/:id',
+        name: consts.KAKAOPAY_FAIL_PAGE,
+        component: () => import('@/views/kakaopay/KakaoPayFail.vue')
+      },
+      {
+        path: 'cancel/:id',
+        name: consts.KAKAOPAY_CANCEL_PAGE,
+        component: () => import('@/views/kakaopay/KakaoPayCancel.vue')
+      }
+    ]
+  },
 ]
 
 const router = createRouter({

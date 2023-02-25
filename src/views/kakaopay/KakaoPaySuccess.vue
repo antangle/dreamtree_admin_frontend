@@ -1,5 +1,5 @@
 <template>
-
+  KAKAOPAY
 </template>
 
 <script setup>
@@ -8,7 +8,6 @@ import {postKakaoPayApproveRequest} from "@/apis/kakaoPayAPIS";
 import {onMounted} from "vue";
 
 const route = useRoute()
-const emits = defineEmits(['onPaymentSuccess', 'onPaymentFail'])
 
 onMounted(() => {
   fetchFunc()
@@ -16,12 +15,11 @@ onMounted(() => {
 
 const fetchFunc = async () => {
   console.log('start payPage')
+  console.log(route)
   /*페이 성공 로직 approve*/
   const pgToken = route.query.pg_token
   const payId = route.params.id
   if(pgToken){
-    console.log(pgToken, payId)
-
     const data = await postKakaoPayApproveRequest(pgToken, payId)
 
     console.log(data)
