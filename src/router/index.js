@@ -176,7 +176,7 @@ const routes = [
       {
         path: 'apply',
         name: consts.LESSON_APPLY_PAGE,
-        component: () => import('@/views/lesson/LessonApplyPage.vue')
+        component: () => import('@/views/program/LessonApplyPage.vue')
       }
     ]
   },

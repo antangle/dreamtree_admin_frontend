@@ -47,7 +47,13 @@
 
 <script setup>
 
+import {postKakaoPayReadyRequest} from "@/apis/kakaoPayAPIS";
+import consts from "@/consts/const";
+import useMemberInfo from "@/store/useMemberInfo";
+
 const props = defineProps(['info'])
+const emits = defineEmits(['paySucceeded'])
+const memberInfo = useMemberInfo().getMemberInfo()
 
 // 날짜 yyyy.MM.DD 변환 함수
 const setLocalDateString = (str) => {
@@ -57,10 +63,40 @@ const setLocalDateString = (str) => {
 
 }
 
-const onClickGetKakaoPay = () => {
+/*레슨 결제 -> title, fee, memberId, memberRole 필요*/
+const onClickGetKakaoPay = async () => {
+  /*todo: 카카오페이 진행 fee, title 필요 */
+  const kakaoPayDTO = {
+    itemName: props.programTitle,
+    id: memberInfo.id,
+    role: memberInfo.role,
+    quantity: 1,
+    totalAmount: props.lessonInfo.fee,
+    taxFreeAmount: 0
+  }
 
+  /*카카오페이 Ready*/
+  const kakaoPayResponse = await postKakaoPayReadyRequest(kakaoPayDTO)
+
+  openWinPop(kakaoPayResponse.next_redirect_pc_url, 720, 480)
+
+  var interval = setInterval(() => {
+    if(localStorage.getItem(consts.PAY_NUMBER)){
+      localStorage.removeItem(consts.PAY_NUMBER)
+      onPaymentSuccess()
+      clearInterval(interval)
+    }
+  }, 5000)
+}
+const openWinPop = (uri, width, height) => {
+  return window.open(uri, width, height);
 }
 
+const onPaymentSuccess = () => {
+  /*결제 성공!*/
+  console.log('결제가 완료되었습니다.')
+  emits('paySucceeded')
+}
 
 </script>
 
