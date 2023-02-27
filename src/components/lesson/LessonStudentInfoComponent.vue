@@ -39,7 +39,7 @@
           <v-divider></v-divider>
 
           <v-card-text>
-            <v-icon icon="fa-solid fa-graduation-cap" /> 학력: {{ programDetailInfo.college }} | {{ programDetailInfo.major }}
+            <v-icon icon="fa-solid fa-graduation-cap" /> 학력: {{ programDetailInfo.college }}  {{ programDetailInfo.major }}
           </v-card-text>
           <v-card-text>
             <v-icon icon="fa-solid fa-stamp" /> 자격증:

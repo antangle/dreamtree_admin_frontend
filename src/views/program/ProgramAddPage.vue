@@ -224,7 +224,6 @@ const saveProgramForm = async () => {
     fee: null,
     curriculumJson: null,
     studentId: null,
-    programId: null,
     fileForms: fileForms
   }
 

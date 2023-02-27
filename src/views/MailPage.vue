@@ -7,8 +7,8 @@
       bg-color="transparent"
       grow
     >
-      <v-tab value="1">보낸 메일</v-tab>
-      <v-tab value="2">받은 메일</v-tab>
+      <v-tab value="1">보낸 쪽지함</v-tab>
+      <v-tab value="2">받은 쪽지함</v-tab>
     </v-tabs>
 
     <v-window v-model="tab">

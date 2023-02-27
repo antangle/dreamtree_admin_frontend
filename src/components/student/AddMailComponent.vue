@@ -12,16 +12,11 @@
             <v-container style="margin: 10px" >
 
               <v-text-field
-                v-model="addMail.toEmail"
-                label="보내는 사람: fuck22@gmail.com"
-                value="fuck22@gmail.com"
-                type="hidden"
-                variant="outlined"
                 style="margin-bottom: 5%"
-              ></v-text-field>
+              >{{ memberInfo.email }}</v-text-field>
 
               <v-text-field
-                v-model="addMail.fromEmail"
+                v-model="addMail.toEmail"
                 label="보낼 사람 (abcd123@gmail.com)"
                 variant="outlined"
               ></v-text-field>
@@ -54,12 +49,14 @@
 <script setup>
 
 import {ref} from "vue";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const emits = defineEmits(['postMail'])
+const memberInfo = useMemberInfo().getMemberInfo()
 
 const addMail = ref({
-  toEmail: 'fuck22@gmail.com',
-  fromEmail: '',
+  toEmail: '',
+  fromEmail: memberInfo.email,
   title: '',
   content: ''
 })
@@ -73,8 +70,8 @@ const accept = () => {
   dialog.value = !dialog.value
 
   addMail.value = {
-    toEmail: 'fuck22@gmail.com',
-    fromEmail: '',
+    toEmail: '',
+    fromEmail: memberInfo.email,
     title: '',
     content: ''
   }

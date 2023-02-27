@@ -80,6 +80,7 @@
 
 import {computed, onMounted, ref} from "vue";
 import {getMail, getToEmail, removeEmail, writeEmail} from "@/apis/StudentAPIS";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['pNum', 'pSize'])
 
@@ -94,6 +95,8 @@ const pageNum = ref(1)
 const dialog = ref(false)
 
 const toMailInfo = ref({})
+
+const memberInfo = useMemberInfo().getMemberInfo()
 
 // 체크 박스
 const selected = ref([])
@@ -125,7 +128,7 @@ const fetchGetList = async () => {
 
   pageNum.value = parseInt(props.pNum)
 
-  const result = {mail: 'fuck22@gmail.com', page: pageNum.value, size: props.pSize}
+  const result = {mail: memberInfo.email, page: pageNum.value, size: props.pSize}
 
   const toData = await getToEmail(result)
 

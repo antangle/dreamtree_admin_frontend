@@ -81,6 +81,7 @@
 import {getFromEmail, getMail, removeEmail, writeEmail} from "@/apis/StudentAPIS";
 import {onMounted, ref} from "vue";
 import AddMailComponent from "@/components/student/AddMailComponent.vue";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['pNum', 'pSize'])
 
@@ -97,6 +98,8 @@ const getDialog = ref(false)
 const fromMailInfo = ref({})
 
 const selected = ref([])
+
+const memberInfo = useMemberInfo().getMemberInfo()
 
 // 체크박스 선택된 메일 삭제
 const removeMail = async () => {
@@ -125,7 +128,7 @@ const fetchGetList = async () => {
 
   pageNum.value = parseInt(props.pNum) || 1
 
-  const fromResult = {mail: 'abcv123@naver.com', page: pageNum.value, size: props.pSize}
+  const fromResult = {mail: memberInfo.email, page: pageNum.value, size: props.pSize}
 
   const fromData = await getFromEmail(fromResult)
 

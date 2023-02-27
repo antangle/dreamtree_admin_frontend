@@ -74,12 +74,12 @@
 <script setup>
 
 import {onMounted, ref} from "vue";
-import {myLessonList, myProgramList} from "@/apis/StudentAPIS";
+import {myLessonList} from "@/apis/StudentAPIS";
 import {removeLesson} from "@/apis/adminAPIS";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['programId'])
-
-
+const memberInfo = useMemberInfo().getMemberInfo()
 const lessons = ref([])
 
 const dialog = ref(false)
@@ -97,7 +97,7 @@ const deleteLesson = async (id) => {
 
 const fetchGetList = async () => {
 
-  const data = await myLessonList(1)
+  const data = await myLessonList(memberInfo.id)
 
   lessons.value = data
 

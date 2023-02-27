@@ -69,8 +69,11 @@ import {getProgramLessonCount, myProgramList} from "@/apis/StudentAPIS";
 import {onMounted, ref} from "vue";
 import ProgramCurriculumDayComponent from "@/components/program/ProgramCurriculumDayComponent.vue";
 import {removeProgram} from "@/apis/adminAPIS";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const emits = defineEmits(['moveProgramModify', 'moveLesson'])
+
+const memberInfo = useMemberInfo().getMemberInfo()
 
 const programs = ref([])
 
@@ -103,7 +106,7 @@ const deleteProgram = async (id) => {
 
 const fetchGetList = async () => {
 
-  programs.value = await myProgramList(1)
+  programs.value = await myProgramList(memberInfo.id)
 
   console.log(programs.value)
 }
