@@ -1,25 +1,27 @@
 <template>
-
-  <h2>프로그램 관리</h2>
   <v-expansion-panels
-
   >
     <v-expansion-panel
       v-for="program in programs"
       :key="program"
     >
       <v-expansion-panel-title>
-        <v-row justify="space-around">
-          <v-col>
-            프로그램: {{program.title}}
-          </v-col>
+        <v-row justify="start">
+
+            {{program.title}}
+
         </v-row>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        제목: {{program.title}} <br>
-        내용: {{program.content}} <br>
-        돈: {{program.fee}}<br>
-        커리큘럼 <br>
+        <br/>
+        <v-row>
+          <v-col cols="2">내용</v-col>
+          <v-col>{{ program.content }}</v-col>
+          <v-col cols="3">가격</v-col>
+          <v-col cols="3">{{ program.fee }}</v-col>
+          <br/>
+        </v-row>
+
         <v-row
           v-for="(dayCurriculum, index) in JSON.parse(program.curriculumJson)"
           :key="index"
