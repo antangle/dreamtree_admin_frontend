@@ -2,9 +2,9 @@
   <v-container class="curriculum-wrapper">
     <v-row
       justify="center"
-      class="bg-black rounded"
+      class="box"
     >
-      <v-col>
+      <v-col >
         {{props.times + 1}} 회차
       </v-col>
       <v-spacer></v-spacer>
@@ -23,7 +23,6 @@
         :key="index"
       >
         {{content}}
-
         <!-- todo: 수정 -->
         <v-btn
           class="float-right"
@@ -75,6 +74,10 @@ const onClickInsideAddButton = (curriculumStr) => {
 </script>
 
 <style scoped>
+
+.box {
+  outline-color: #424242;
+}
 .curriculum-wrapper{
   border: #212529;
   border-style: solid;
@@ -82,8 +85,7 @@ const onClickInsideAddButton = (curriculumStr) => {
 }
 
 .curriculum-day{
-  border: #212529;
-  border-style: solid;
+  background-color: #F2F2F2;
   border-radius: 10px;
 }
 

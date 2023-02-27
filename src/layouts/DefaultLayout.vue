@@ -75,11 +75,12 @@
       <div
         style="margin-left: 5px"
       >
-        <v-icon
-          icon="fa-sharp fa-solid fa-house"
+        <v-img
+          class="home-button"
+          src="public/home_loc_icon.png"
           @click="() => movePage(consts.HOME_PAGE)"
         >
-        </v-icon>
+        </v-img>
       </div>
 
       <v-spacer></v-spacer>
@@ -281,6 +282,13 @@ const onClickLogout = async () => {
 
 .main {
   background-color: rgb(255, 243, 237);
+}
+
+.home-button {
+  width: 80px;
+  height: 80px;
+  position: center;
+
 }
 
 </style>
