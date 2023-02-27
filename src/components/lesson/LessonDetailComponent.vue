@@ -72,7 +72,9 @@
 <script setup>
 import {bitToDayParser} from "@/util/dayBitParser";
 import consts from "@/consts/const";
+import useMemberInfo from "@/store/useMemberInfo";
 
+const memberInfo = useMemberInfo().getMemberInfo()
 const props = defineProps(['lessonInfo', 'programTitle']);
 const emits = defineEmits(['paySucceeded', 'moveLessonApplyPage'])
 
