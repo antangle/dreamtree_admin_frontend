@@ -1,10 +1,11 @@
 <template>
 <DefaultLayout>
+  <div class="background">
   <div class="vue-word-cloud-container">
     <div class="vue-word-cloud-wrapper">
       <vue-word-cloud
         :words="words"
-        :color="([, weight]) => weight > 10 ? 'DeepPink' : weight > 5 ? 'RoyalBlue' : 'Indigo'"
+        :color="([, weight]) => weight > 10 ? '#FF8787C4' : weight > 5 ? '#424242' : '#79717A'"
         font-family="Roboto"
       >
         <template v-slot="{text, weight, word}">
@@ -15,6 +16,7 @@
       </vue-word-cloud>
     </div>
   </div>
+</div>
 </DefaultLayout>
 </template>
 
@@ -58,15 +60,23 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.background {
+  background-image: url("public/cherryblossom_icon.png");
+  background-size: cover;
+  background-color: rgb(255, 243, 237);
+  background-position-y: 25px;
+  background-position-x: -40px;
+  height: 900px;
+}
 .vue-word-cloud-container{
-
   display: flex;
   justify-content: center;
-  align-items: center;
+  min-height: 100%;
 }
 .vue-word-cloud-wrapper{
+  background-color: transparent;
   max-width: 90%;
-  max-height: 90%;
+  max-height: 100%;
   min-width: 80%;
   min-height: 50%;
   height: 640px;

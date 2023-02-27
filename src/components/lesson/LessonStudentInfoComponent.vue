@@ -1,7 +1,7 @@
 <template>
   <v-row dense class="border">
     <v-col
-      cols="3"
+      cols="2"
       class="border d-flex"
     >
       <v-img
@@ -19,9 +19,9 @@
         </template>
       </v-img>
     </v-col>
-    <v-col class="ma-1 bg-grey-lighten-3">
+    <v-col class="ma-1 bg-grey-lighten-5">
       <v-sheet>
-        <v-card flat class="bg-grey-lighten-3">
+        <v-card flat class="bg-grey-lighten-5">
           <v-row justify="space-around">
             <v-col cols="7">
               <v-card-title>
@@ -45,6 +45,7 @@
             <v-icon icon="fa-solid fa-stamp" /> 자격증:
             <v-chip
               v-for="certificateName in programDetailInfo.certificateNames"
+              color="red"
               :key="certificateName"
               class="ma-0"
             >

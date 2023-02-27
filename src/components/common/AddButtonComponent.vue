@@ -1,6 +1,7 @@
 <template>
 
   <div class="button_group horizontal" >
+
     <v-btn
       v-if="(memberInfo.role == consts.STUDENT && memberInfo.authState == 'yes') || memberInfo.role == consts.ADMIN"
       class="cube1"
@@ -58,6 +59,7 @@ const memberInfo = useMemberInfo().getMemberInfo()
 }
 
 .cube1 {
+  background-image: url("public/parents.png");
   width: 60px;
   height: 60px;
   border-radius: 100px;

@@ -16,7 +16,7 @@
             v-slot="{ isSelected, toggle }"
           >
             <v-card
-              :color="isSelected ? 'primary' : 'grey-lighten-1'"
+              :color="isSelected ? '#D9B4C8' : '#F2F2F2'"
               class="ma-4"
               height="200"
               width="200"

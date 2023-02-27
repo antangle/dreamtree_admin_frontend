@@ -13,12 +13,11 @@
       >
         <v-col>
           <v-card
-            color='grey-lighten-1'
-            class="ma-4 justify-center align-center"
+            class="lessons"
             height="200"
             width="200"
           >
-            <div>
+            <div style="margin: 10px; color: #424242">
               현재 등록된 레슨이 없습니다
             </div>
           </v-card>
@@ -62,7 +61,6 @@
             </v-card-title>
 
             <v-card-item>
-              커리큘럼
               <v-row
                 v-for="(dayCurriculum, index) in programDetailInfo.curriculumJson"
                 :key="index"
@@ -78,7 +76,7 @@
               </v-row>
             </v-card-item>
 
-            <v-card-text>
+            <v-card-text style="margin-top: 15px">
               {{ programDetailInfo.content }}
             </v-card-text>
 
@@ -207,4 +205,10 @@ onMounted(() => {
 
 <style scoped>
 
+.lessons {
+  background-color: #F2F2F2;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
 </style>
