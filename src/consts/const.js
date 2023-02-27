@@ -11,7 +11,7 @@ const consts = {
   // api
   DOMAIN: DOMAIN,
   IMG_DOMAIN: `${DOMAIN}/api/minio`,
-
+  VIDEO_DOMAIN: `${DOMAIN}/api/minio/video`,
   // page names
   HOME_PAGE: "HomePage",
   PROGRAM_LIST_PAGE: "ProgramListPage",
@@ -25,6 +25,8 @@ const consts = {
   KAKAOPAY_SUCCESS_PAGE: "KakaoPaySuccessPage",
   KAKAOPAY_CANCEL_PAGE: "KakaoPayCancelPage",
   KAKAOPAY_FAIL_PAGE: "KakaoPayFailPage",
+
+  CONTENT_TYPE_VIDEO_MP4: 'video/mp4',
 }
 
 

@@ -85,7 +85,7 @@
             <v-card-item>
               <v-row>
                 <v-col
-                  v-for="url in programDetailInfo.fileUrls"
+                  v-for="url in images"
                   :key="url"
                 >
                   <v-img
@@ -104,6 +104,19 @@
                 </v-col>
               </v-row>
             </v-card-item>
+
+            <v-card-item>
+              <v-row>
+                <v-col
+                  v-for="url in videos"
+                  :key="url"
+                >
+                  <video controls>
+                    <source :src="getVideoUrl(url)">
+                  </video>
+                </v-col>
+              </v-row>
+            </v-card-item>
           </v-card>
         </v-col>
       </v-row>
@@ -117,6 +130,7 @@
         </v-col>
       </v-row>
     </v-container>
+
   </DefaultLayout>
 </template>
 
@@ -130,13 +144,17 @@ import consts from "@/consts/const";
 import LessonStudentInfoComponent from "@/components/lesson/LessonStudentInfoComponent.vue";
 import LessonInfoComponent from "@/components/lesson/LessonInfoComponent.vue";
 import LessonDetailComponent from "@/components/lesson/LessonDetailComponent.vue";
-import {getImageUrl} from "@/util/imageUrlGetter";
+import {getImageUrl, getVideoUrl} from "@/util/imageUrlGetter";
+import {VideoPlayer} from "@videojs-player/vue";
 
 
 const programDetailInfo = ref({})
 const lessonDialog = ref(false)
 const lessonIndex = ref()
 const lessonDetailComponentKey = ref(0)
+
+const images = ref([])
+const videos = ref([])
 
 const route = useRoute()
 const router = useRouter()
@@ -196,6 +214,16 @@ const fetchProgramDetailInfo = async () => {
 
   data.curriculumJson = JSON.parse(data.curriculumJson)
 
+  data.fileUrls.map(item => {
+    console.log(item)
+    if(item.contentType == consts.CONTENT_TYPE_VIDEO_MP4){
+      videos.value.push(item.filename)
+    } else{
+      images.value.push(item.filename)
+    }
+  })
+
+  console.log(data)
   programDetailInfo.value = data
 
 }

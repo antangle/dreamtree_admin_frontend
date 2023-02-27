@@ -161,8 +161,8 @@ const onClickUploadButton = () => {
 }
 
 //첨부파일 imageList에 추가, 추가시 ImageListComponent 리로딩
-const addImages = (imageNames) => {
-  imageNameList.value.push(...imageNames)
+const addImages = (fileDTO) => {
+  imageNameList.value.push(...fileDTO)
   imageListKey.value++
 }
 

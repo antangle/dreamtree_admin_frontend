@@ -17,6 +17,10 @@ export function getImageUrl(url) {
   return url ? `${consts.IMG_DOMAIN}/${url}` : noImage
 }
 
+export function getVideoUrl(url) {
+  return url ? `${consts.VIDEO_DOMAIN}/${url}` : null
+}
+
 export function getThumbnailImageUrl(url) {
   if(url && url.substring(0,4) == 'http') return url
   return url ? `t_${consts.IMG_DOMAIN}/${url}` : noImage

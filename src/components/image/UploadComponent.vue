@@ -55,9 +55,9 @@ const onClickUpload = async () => {
       formData.append("files", file, file.name)
     }
 
-    const fileNames = await postUpload(formData)
+    const fileDTO = await postUpload(formData)
 
-    emits('addImages', fileNames)
+    emits('addImages', fileDTO)
   }
   emits('offDialog')
 }
