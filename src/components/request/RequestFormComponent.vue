@@ -82,15 +82,17 @@ import MainCategoryComponent from "@/components/category/MainCategoryComponent.v
 import SubCategoryComponent from "@/components/category/SubCategoryComponent.vue";
 import {getRequestDetail, postRequest, putRequest} from "@/apis/RequestAPIS";
 import {useRoute} from "vue-router";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const emits = defineEmits(['moveListPage', 'moveDetailPage'])
 
 const route = useRoute()
 const request_id = parseInt(route.params.id)
+const memberInfo = useMemberInfo().getMemberInfo()
 
 const requestForm = ref({
   title: null,
-  parent_id: 13,
+  parent_id: memberInfo.id,
   sub_category_id: null,
   description: null,
   content: null,
@@ -104,9 +106,8 @@ const gradeList = ref(['입학예정', '저학년', '고학년', '중학생 이�
 
 const genderList = ['남', '여', '선택 안 함']
 
-
+/** 수정일 경우 requestId로 요청글 정보 받아오기 **/
 const fetchGetRequestInfo = async () => {
-
   console.log(request_id)
 
   if(request_id) {
@@ -118,15 +119,29 @@ onMounted(() => {
   fetchGetRequestInfo()
 })
 
+/** validation **/
+let valid = false
+let validAlertText = ref('')
+
+for (const key in requestForm) {
+  if (!key) {
+
+    validAlertText.value += key + ' '
+
+  }
+
+}
+
 /** 카테고리 설정 **/
 //부 카테고리 변경 시 programForm에 subCategoryId 추가
 const onUpdateSubCategory = (subCategoryId) => {
-  requestForm.value.sub_category_id = subCategoryId
 
+  requestForm.value.sub_category_id = subCategoryId
   console.log(requestForm.value)
 }
 
 //주 카테고리 변경시 categoryList 반환
+
 const mainCategoryChange = (categoryList) => {
 
   subCategoryList.value = categoryList
@@ -137,29 +152,33 @@ const mainCategoryChange = (categoryList) => {
 const onClickSaveRequest = async () => {
 
   requestForm.value.description = requestForm.value.content.split(".")[0]
-
   // 요청글 수정으로 들어온 경우
   if (request_id) {
-    requestForm.value.request_id = request_id
 
-    console.log("Modify...........")
-    console.log(requestForm.value)
+    if (valid) {
+      requestForm.value.request_id = request_id
+      console.log("Modify...........")
 
-    await putRequest(requestForm.value)
+      console.log(requestForm.value)
 
-    emits('moveDetailPage', request_id)
+      await putRequest(requestForm.value)
+      emits('moveDetailPage', request_id)
+    } else alert("필수 입력 항목을 작성해주세요")
+
   }
   // 요청글 작성으로 들어온 경우
   else {
 
     console.log(requestForm.value)
 
-    await postRequest(requestForm.value)
+    if (valid) {
+      await postRequest(requestForm.value)
+    } else alert(validAlertText)
 
     emits('moveListPage')
-
   }
 }
+
 
 </script>
 

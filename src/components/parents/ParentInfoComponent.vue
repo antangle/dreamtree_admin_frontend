@@ -23,6 +23,7 @@
         </v-card-title>
 
         <v-btn
+          v-if="info.id === memberInfo.id"
           flat
           color="grey"
           size="small"
@@ -65,11 +66,13 @@
 
 import {onMounted, ref} from "vue";
 import {getParentInfo} from "@/apis/ParentAPIS";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['id'])
 const emits = defineEmits(['onClickMoveInfoModifyPage'])
+const memberInfo = useMemberInfo().getMemberInfo()
 
-const info = ref({email: null, nickname: null, birth: null, profileImgUrl: null})
+const info = ref({id: null, email: null, nickname: null, birth: null, profileImgUrl: null})
 const fetchGetInfo = async () => {
 
   const res = await getParentInfo(props.id)

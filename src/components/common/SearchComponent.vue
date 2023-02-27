@@ -4,6 +4,13 @@
     <v-card class="container">
       <v-select
         style="max-width: 15%"
+        v-model="selectSearchKeyword.order"
+        label="정렬순"
+        :items="props.orders"
+      ></v-select>
+
+      <v-select
+        style="max-width: 20%"
         v-model="selectSearchKeyword.condition"
         label="검색조건"
         :items="props.conditions"
@@ -32,10 +39,11 @@
 import {ref} from "vue";
 
 const emits = defineEmits(['clickSearch'])
-const props = defineProps(['conditions'])
+const props = defineProps(['conditions', 'orders'])
 
-const selectSearchKeyword = ref({keyword: '', condition: 'total'})
+const studentSearchConditionList = ['total', 'nickname', 'email', 'authState']
 
+const selectSearchKeyword = ref({keyword: '', condition: 'total', order: ''})
 
 
 </script>

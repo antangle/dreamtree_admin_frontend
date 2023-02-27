@@ -59,6 +59,7 @@ onMounted(() => {
 
 <style scoped>
 .vue-word-cloud-container{
+
   display: flex;
   justify-content: center;
   align-items: center;
