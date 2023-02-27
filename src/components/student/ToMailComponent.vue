@@ -23,7 +23,7 @@
               </v-avatar>
 
               <div style="margin-left: 15px;">
-                <v-list-item-title v-text="mail.fromEmail"></v-list-item-title>
+                <v-list-item-title v-text="mail.toEmail"></v-list-item-title>
                 <div class="d-flex flex-no-wrap">
                   <v-list-subheader> {{ mail.updatedAt }}</v-list-subheader>
                   <v-list-subheader> {{ mailCheck }}</v-list-subheader>
@@ -79,7 +79,7 @@
 <script setup>
 
 import {computed, onMounted, ref} from "vue";
-import {getMail, getToEmail, removeEmail, writeEmail} from "@/apis/StudentAPIS";
+import {getFromEmail, getMail, getToEmail, removeEmail, writeEmail} from "@/apis/StudentAPIS";
 import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['pNum', 'pSize'])
@@ -130,7 +130,7 @@ const fetchGetList = async () => {
 
   const result = {mail: memberInfo.email, page: pageNum.value, size: props.pSize}
 
-  const toData = await getToEmail(result)
+  const toData = await getFromEmail(result)
 
   toMails.value = toData.dtoList
 

@@ -11,7 +11,7 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
     id: null,
     role: null,
     email: null,
-    authState: null,
+    authState: 'yes',
     nickname: null,
     profileImage: null,
     thumbnailImage: null

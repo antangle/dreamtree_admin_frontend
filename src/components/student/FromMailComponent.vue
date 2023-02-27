@@ -23,7 +23,7 @@
               </v-avatar>
 
               <div style="margin-left: 15px;">
-                <v-list-item-title v-text="mail.fromEmail"></v-list-item-title>
+                <v-list-item-title v-text="mail.toEmail"></v-list-item-title>
                 <div class="d-flex flex-no-wrap">
                   <v-list-subheader> {{ mail.updatedAt }}</v-list-subheader>
                   <v-list-subheader> {{ mail.check == true ? '읽음' : '읽지않음' }}</v-list-subheader>
@@ -59,7 +59,7 @@
       <v-card>
         <v-card-text style="text-align: center">
           <div class="v-container">
-            보낸사람: {{ fromMailInfo.fromEmail }} <br>
+            보낸사람: {{ fromMailInfo.toEmail }} <br>
             제목: {{ fromMailInfo.title }} <br>
             내용: {{ fromMailInfo.content }} <br>
             보낸날짜: {{ fromMailInfo.updatedAt }}
@@ -78,7 +78,7 @@
 
 <script setup>
 
-import {getFromEmail, getMail, removeEmail, writeEmail} from "@/apis/StudentAPIS";
+import {getFromEmail, getMail, getToEmail, removeEmail, writeEmail} from "@/apis/StudentAPIS";
 import {onMounted, ref} from "vue";
 import AddMailComponent from "@/components/student/AddMailComponent.vue";
 import useMemberInfo from "@/store/useMemberInfo";
@@ -130,7 +130,7 @@ const fetchGetList = async () => {
 
   const fromResult = {mail: memberInfo.email, page: pageNum.value, size: props.pSize}
 
-  const fromData = await getFromEmail(fromResult)
+  const fromData = await getToEmail(fromResult)
 
   fromMails.value = fromData.dtoList
 

@@ -110,6 +110,7 @@ const getKakaoAccount =  async () => {
       cookies.set("loginId", loginInfo.id)
       cookies.set("loginRole", loginInfo.memberValue)
       cookies.set("loginEmail", data.value.userInfoDTO.account_email)
+      cookies.set("studentAuthState", loginInfo.authState)
       cookies.set("loginNickname", loginInfo.nickname)
       cookies.set("loginProfileImg", loginInfo.profileImgUrl)
       cookies.set("studentAuthState", loginInfo.authState)
