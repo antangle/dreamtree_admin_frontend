@@ -1,7 +1,6 @@
 import {ref} from "vue";
 import {defineStore} from "pinia";
 import {useCookies} from "vue3-cookies";
-import consts from "@/consts/const";
 
 const {cookies} = useCookies()
 
