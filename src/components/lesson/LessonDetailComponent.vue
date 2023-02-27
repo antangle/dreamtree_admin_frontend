@@ -58,14 +58,14 @@
     <v-row>
       <v-col>
         <v-btn
-          v-if="memberInfo.role == consts.PARENT || memberInfo.role == consts.ADMIN"
+          v-if="(memberInfo.role == consts.PARENT || memberInfo.role == consts.ADMIN) && lessonInfo.state != 'close'"
           @click="() => onClickApplyButton(lessonInfo, programTitle)"
           >
           문의하기
         </v-btn>
+        <span v-if="lessonInfo.state == 'close'">마감</span>
       </v-col>
     </v-row>
-    {{lessonInfo}}
   </v-container>
 </template>
 
@@ -84,6 +84,12 @@ const onClickApplyButton = (lessonInfo, programTitle) => {
     return
   }
   emits('moveLessonApplyPage', lessonInfo, programTitle)
+}
+
+const checkClose = () => {
+  console.log("p:", lessonInfo.state)
+
+  return props.lessonInfo.state == 'close' ? true : false
 }
 
 
