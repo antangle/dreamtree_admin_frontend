@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout>     <!--카테고리-->
+x  <DefaultLayout>     <!--카테고리-->
       <v-container class="form-container">
           <v-row>
             <v-col>

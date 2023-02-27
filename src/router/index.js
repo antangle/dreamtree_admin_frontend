@@ -55,6 +55,12 @@ const routes = [
         name: 'MyLessonListPage',
         component: () => import('@/views/MyLessonListPage.vue')
       },
+      {
+        // 레슨 (대학생)
+        path: 'lesson/apply',
+        name: consts.MY_LESSON_APPLIED_PAGE,
+        component: () => import('@/views/MyAppliedLessonPage.vue')
+      },
 
       /** 학부모 마이페이지 **/
       // 학부모 정보 조회

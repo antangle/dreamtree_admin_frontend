@@ -77,7 +77,7 @@
       >
         <v-img
           class="home-button"
-          src="public/home_loc_icon.png"
+          :src="home_icon"
           @click="() => movePage(consts.HOME_PAGE)"
         >
         </v-img>
@@ -171,7 +171,7 @@ import {getPersonImageUrl} from "@/util/imageUrlGetter";
 import {useCookies} from "vue3-cookies";
 import objectMapper from "@/util/objectmapper";
 import {getStudentInfo} from "@/apis/adminAPIS";
-
+import home_icon from '@/../public/home_loc_icon.png'
 /** 분야 카테고리 **/
 const categories = ref([])
 const member = ref({

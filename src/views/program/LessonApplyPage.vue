@@ -138,6 +138,8 @@ const onClickRequestButton = async () => {
   }
 
   const progressDTO = {
+    childGrade: requestForm.value.student_grade,
+    childGender: requestForm.value.student_gender,
     childName: requestForm.value.childName,
     parentId: requestForm.value.parent_id,
     lessonId: route.query.lessonId

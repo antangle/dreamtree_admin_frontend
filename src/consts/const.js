@@ -25,6 +25,7 @@ const consts = {
   KAKAOPAY_SUCCESS_PAGE: "KakaoPaySuccessPage",
   KAKAOPAY_CANCEL_PAGE: "KakaoPayCancelPage",
   KAKAOPAY_FAIL_PAGE: "KakaoPayFailPage",
+  MY_LESSON_APPLIED_PAGE: "MyLessonAppliedPage",
 
   CONTENT_TYPE_VIDEO_MP4: 'video/mp4',
 }

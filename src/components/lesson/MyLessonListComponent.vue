@@ -97,8 +97,9 @@ const deleteLesson = async (id) => {
 
 const fetchGetList = async () => {
 
-  const data = await myLessonList(memberInfo.id)
+  let data = await myLessonList(memberInfo.id)
 
+  data = data.filter(item => item.lessonProgressDTO.length != 0)
   lessons.value = data
 
   /*programId을 어떻게 가져와서(query) 조회*/

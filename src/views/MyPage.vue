@@ -7,6 +7,7 @@
       @onClickMoveProgramListPage="movePageById('MyProgramListPage', id)"
       @onClickMoveLessonListPage="movePageById('MyLessonListPage', id)"
       @onClickMoveAttendancePage="movePageById('MyAttendancePage', id)"
+      @onClickMoveLessonAppliedPage="movePage(consts.MY_LESSON_APPLIED_PAGE)"
     />
 
     <ParentMyPageComponent
@@ -32,6 +33,7 @@ import StudentMyPageComponent from "@/components/student/StudentMyPageComponent.
 import useMemberInfo from "@/store/useMemberInfo";
 import {ref} from "vue";
 import AdminMyPageComponent from "@/components/admin/AdminMyPageComponent.vue";
+import consts from "@/consts/const";
 
 const router = useRouter()
 const memberInfo = ref(useMemberInfo().getMemberInfo())

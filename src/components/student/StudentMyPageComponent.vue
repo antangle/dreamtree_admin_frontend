@@ -24,7 +24,7 @@
     <v-list-item
       prepend-icon="fa-solid fa-caret-right"
       title="수강 신청 관리"
-      @click="() => emits(`onClickMoveLessonListPage`)"
+      @click="() => emits(`onClickMoveLessonAppliedPage`)"
     ></v-list-item>
 
     <v-divider/>
@@ -32,7 +32,7 @@
     <v-list-item
       prepend-icon="fa-solid fa-caret-right"
       title="출석 관리"
-      @click="() => emits(`onClickMoveAttendancePage`)"
+      @click="() => emits(`onClickMoveLessonAppliedPage`)"
     ></v-list-item>
 
     <v-divider/>
@@ -50,7 +50,7 @@
 
 import useMemberInfo from "@/store/useMemberInfo";
 
-const emits = defineEmits([ 'onClickMoveProgramListPage', 'onClickMoveLessonListPage', 'onClickMoveAttendancePage', 'onClickMoveInfo' ])
+const emits = defineEmits([ 'onClickMoveProgramListPage', 'onClickMoveLessonListPage', 'onClickMoveAttendancePage', 'onClickMoveLessonAppliedPage', 'onClickMoveInfo' ])
 const memberInfo = useMemberInfo().getMemberInfo()
 
 </script>
