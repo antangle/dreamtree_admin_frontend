@@ -12,6 +12,10 @@ export const getRequestList = async (keyword, page, size) => {
 
   if (keyword.condition == 'category') { keyword.condition = 'category_name' }
 
+  if (keyword.order == '등록순') { keyword.order = '' }
+
+  if (keyword.order == '제목순') { keyword.order = 'title' }
+
   const res = await axios.get(`http://localhost:8081/api/request/list`, {
     params: {
       keyword: keyword.keyword,
