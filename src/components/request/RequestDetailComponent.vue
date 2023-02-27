@@ -46,6 +46,7 @@
   <div class="d-flex">
 
     <v-btn
+      v-if="info.parentId === memberInfo.id"
       @click="emits('moveModifyPage', props.id)"
     >
       수정
@@ -65,9 +66,11 @@
 
 import {onMounted, ref} from "vue";
 import {getRequestDetail} from "@/apis/RequestAPIS";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['id'])
 const emits = defineEmits(['moveModifyPage', 'moveListPage'])
+const memberInfo = useMemberInfo().getMemberInfo()
 const info = ref({})
 
 const fetchGetRequestInfo = async () => {

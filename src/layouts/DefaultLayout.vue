@@ -133,10 +133,11 @@
 
     </v-app-bar>
 
-    <v-main class="bg-grey-lighten-3">
+    <v-main class="main">
       <v-container>
 
         <v-sheet
+          class="sheet"
           min-height="70vh"
           rounded="lg"
           style="justify-content: center"
@@ -277,5 +278,9 @@ const onClickLogout = async () => {
 </script>
 
 <style scoped>
+
+.main {
+  background-color: rgb(255, 243, 237);
+}
 
 </style>

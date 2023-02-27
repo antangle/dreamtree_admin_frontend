@@ -1,6 +1,9 @@
 <template>
   <DefaultLayout>
-    <SearchComponent :conditions="conditions" @clickSearch="clickSearch" />
+    <SearchComponent
+      :conditions="conditions"
+      :orders="orders"
+      @clickSearch="clickSearch" />
 
     <RequestListComponent
       @movePage="movePage"
@@ -32,12 +35,14 @@ const pNum = ref(route.query.page || 1)
 const pSize = ref(route.query.size || 10)
 
 const conditions = ref(['total', 'title', 'nickname', 'subCategory', 'category'])
-const searchCondition = ref({ keyword: '', condition: ''})
+const orders = ref(['newest', 'title'])
+const searchCondition = ref({ keyword: '', condition: '', order: '' })
 
 const clickSearch = (emittedSearchKeyword) => {
 
   searchCondition.value.condition = emittedSearchKeyword.condition
   searchCondition.value.keyword = emittedSearchKeyword.keyword
+  searchCondition.value.order = emittedSearchKeyword.order
 
   console.log("Searching....")
 
@@ -51,7 +56,9 @@ const movePage = (pageNum) => {
 
   router.push({ name: "RequestListPage",
     query: {
-      ...searchCondition.value,
+      keyword: route.query.keyword || "",
+      condition: route.query.condition || "",
+      order: route.query.order || "",
       page: pNum.value,
       size: pSize.value
     }

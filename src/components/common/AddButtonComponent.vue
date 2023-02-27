@@ -1,6 +1,5 @@
 <template>
 
-
   <div class="button_group horizontal" >
     <v-btn
       v-if="(memberInfo.role == consts.STUDENT && memberInfo.authState == 'yes') || memberInfo.role == consts.ADMIN"
@@ -49,7 +48,7 @@ const memberInfo = useMemberInfo().getMemberInfo()
 }
 
 .horizontal {
-  background: #fff;
+  background: transparent;
   border-radius: 4px;
   position: absolute;
   bottom: 1%;
@@ -61,8 +60,7 @@ const memberInfo = useMemberInfo().getMemberInfo()
 .cube1 {
   width: 60px;
   height: 60px;
-  background: rgba(52, 25, 25, 0.77);
-  border-radius: 6px;
+  border-radius: 100px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -73,8 +71,8 @@ const memberInfo = useMemberInfo().getMemberInfo()
 .cube2 {
   width: 60px;
   height: 60px;
-  background: rgba(222, 199, 199, 0.77);
-  border-radius: 6px;
+  background: #f9bbb0;
+  border-radius: 100px;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -85,8 +83,8 @@ const memberInfo = useMemberInfo().getMemberInfo()
 .cube3 {
   width: 60px;
   height: 60px;
-  background: rgba(52, 25, 25, 0.77);
-  border-radius: 6px;
+  background: #f0b9a9;
+  border-radius: 100px;
   align-items: center;
   justify-content: center;
   position: relative;

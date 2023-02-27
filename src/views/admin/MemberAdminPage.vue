@@ -18,7 +18,7 @@
           @movePageNum="movePageNum"
           @moveStudentInfo="moveStudentInfo"
           @moveAuthManagementPage="moveAuthManagementPage"
-          :searchKeyword="searchCondition"
+          :searchKeyword="searchKeyword"
           :pNum="pNum"
           :pSize="pSize"
           :key="componentKey"
@@ -26,7 +26,11 @@
       </v-window-item>
 
       <v-window-item value="2">
-        <SearchComponent @clickSearch="clickSearch"/>
+        <SearchComponent
+          @clickSearch="clickSearch"
+          :conditions="parentConditions"
+          :orders="parentOrders"
+        />
         <ParentAdminComponent
           @movePageNum="movePageNum"
           @onClickMoveInfoModifyPage="moveInfoModifyPage"
@@ -44,7 +48,7 @@
 </template>
 
 <script setup>
-import ParentAdminComponent from "@/components/ParentAdminComponent.vue";
+import ParentAdminComponent from "@/components/admin/ParentAdminComponent.vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import {ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
@@ -60,9 +64,12 @@ const route = useRoute()
 const pNum = ref(route.query.page || 1)
 const pSize = ref(route.query.size || 10)
 
-const searchCondition = ref({ keyword: '', condition: '' })
+const searchCondition = ref({ keyword: '', condition: '', order: '' })
+const searchKeyword = ref({ keyword: '', condition: ['total'] })
 
-const searchKeyword = ref({ keyword: '', condition: ['total', 'email'] })
+const parentConditions = ref(['total', 'email', 'nickname'])
+const parentOrders = ref(['newest', 'email'])
+
 
 const componentKey = ref(0)
 
@@ -88,14 +95,19 @@ const clickSearch = (search) => {
 
   console.log(search)
 
-  searchKeyword.value.keyword = search.keyword
+  searchCondition.value.keyword = search.keyword
 
-  searchKeyword.value.condition = search.condition
+  searchCondition.value.condition = search.condition
+
+  searchCondition.value.order = search.order
+
+  console.log('searchConditions...', searchCondition.value)
 
   router.push({name: "MemberAdminPage",
     query: {
-      keyword: searchKeyword.value.keyword,
-      condition: searchKeyword.value.condition,
+      keyword: searchCondition.value.keyword,
+      condition: searchCondition.value.condition,
+      order: searchCondition.value.order,
       page: 1,
       size: 10
     }})
@@ -107,7 +119,7 @@ const movePageNum = (pageNum) => {
 
   router.push({ name: "MemberAdminPage",
     query: {
-      ...searchKeyword.value,
+      ...searchCondition.value,
       page: pNum.value,
       size: pSize.value
     }
@@ -133,9 +145,9 @@ router.beforeEach((to, from, next)=> {
 
   pNum.value = to.query.page
 
-  searchKeyword.value.keyword = to.query.keyword || ''
+  searchCondition.value.keyword = to.query.keyword || ''
 
-  searchKeyword.value.condition = to.query.condition || 'total'
+  searchCondition.value.condition = to.query.condition || 'total'
 
   if(to.name == 'MemberAdminPage') componentKey.value++
 
