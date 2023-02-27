@@ -11,8 +11,8 @@
 <script setup>
 
 import {useRoute, useRouter} from "vue-router";
-import StudentInfoComponent from "@/components/admin/AdminStudentInfoComponent.vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
+import AdminStudentInfoComponent from "@/components/admin/AdminStudentInfoComponent.vue";
 
 const router = useRouter()
 

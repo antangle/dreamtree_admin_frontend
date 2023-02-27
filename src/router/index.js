@@ -39,10 +39,21 @@ const routes = [
         component: () => import('@/views/student/StudentInfoPage.vue'),
       },
       {
+        path: 'studentInfo/modify/:id',
+        name: 'StudentModifyPage',
+        component: () => import('@/views/student/StudentModifyPage.vue'),
+      },
+      {
         // 프로그램 (대학생)
         path: 'program/:id',
         name: 'MyProgramListPage',
         component: () => import('@/views/MyProgramListPage.vue')
+      },
+      {
+        // 레슨 (대학생)
+        path: 'lesson/:id',
+        name: 'MyLessonListPage',
+        component: () => import('@/views/MyLessonListPage.vue')
       },
 
       /** 학부모 마이페이지 **/
@@ -79,6 +90,12 @@ const routes = [
             path: 'studentInfo/:id',
             name: 'AdminStudentInfoPage',
             component: () => import('@/views/admin/AdminStudentInfoPage.vue')
+          },
+          {
+            // Admin 학생 정보 수정
+            path: 'studentInfo/modify/:id',
+            name: 'AdminStudentModifyPage',
+            component: () => import('@/views/student/StudentModifyPage')
           },
           {
             // 인증 요청 리스트

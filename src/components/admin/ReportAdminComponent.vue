@@ -2,7 +2,7 @@
 
   <div class="v-container">
 
-    내가 신고한 목록<br>
+    신고 리스트<br>
     <div style="width: 1000px">
       <v-select
         style="max-width: 15%"
@@ -137,24 +137,22 @@ const sortItem = () => {
   }
 }
 
-const selectCheck = computed(() => {
-
-  return select.value
-})
-
 const fetchGetList = async () => {
 
   pageNum.value = parseInt(props.pNum)
 
-  const result = {reporterEmail: 'reportEmail1', page: pageNum.value, size: props.pSize, sort: sortItem()}
+  const result = {page: pageNum.value, size: props.pSize, sort: sortItem()}
 
-  const reportData = await myReportList(result)
+
+  const reportData = await adminGetReport(result)
 
   reports.value = reportData.dtoList
 
   totalPageSize.value = reportData.end
+  //totalPageSize.value = Math.ceil(data.total / props.pSize)
 
-  console.log(reports.value)
+  console.log("reportData: ", reportData)
+  console.log("total: ", reportData.total)
 
 }
 

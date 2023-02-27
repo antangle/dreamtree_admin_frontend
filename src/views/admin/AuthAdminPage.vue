@@ -57,7 +57,7 @@ const clickSearch = (search) => {
 
   searchKeyword.value.condition = search.condition
 
-  router.push({name: "AuthManagementPage",
+  router.push({name: "AuthAdminPage",
     query: {
       keyword: searchKeyword.value.keyword,
       condition: searchKeyword.value.condition,
@@ -74,7 +74,7 @@ const moveCollegePageNum = (pageNum) => {
 
   collegePNum.value = pageNum
 
-  router.push({ name: "AuthManagementPage",
+  router.push({ name: "AuthAdminPage",
     query: {
       ...searchKeyword.value,
       collegePage: collegePNum.value,
@@ -107,7 +107,7 @@ const moveCertificatePageNum = (pageNum) => {
 
   certificatePNum.value = pageNum
 
-  router.push({ name: "AuthManagementPage",
+  router.push({ name: "AuthAdminPage",
     query: {
       ...searchKeyword.value,
       collegePage: collegePNum.value,

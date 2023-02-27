@@ -1,8 +1,7 @@
 <template>
-
   <h2>레슨 관리</h2>
   <v-expansion-panels
-
+      v-model="programPanel"
   >
     <v-expansion-panel
       v-for="program in lessons"
@@ -69,6 +68,7 @@
       <v-divider></v-divider>
     </v-expansion-panel>
   </v-expansion-panels>
+
 </template>
 
 <script setup>
@@ -77,10 +77,14 @@ import {onMounted, ref} from "vue";
 import {myLessonList, myProgramList} from "@/apis/StudentAPIS";
 import {removeLesson} from "@/apis/adminAPIS";
 
+const props = defineProps(['programId'])
+
 
 const lessons = ref([])
 
 const dialog = ref(false)
+
+const programPanel = ref()
 
 const deleteLesson = async (id) => {
 
@@ -93,7 +97,18 @@ const deleteLesson = async (id) => {
 
 const fetchGetList = async () => {
 
-  lessons.value = await myLessonList(1)
+  const data = await myLessonList(1)
+
+  lessons.value = data
+
+  /*programId을 어떻게 가져와서(query) 조회*/
+
+  const programId = props.programId
+  lessons.value.filter((data, index) => {
+    if(data.programId == programId){
+      programPanel.value = index
+    }
+  })
 
 }
 

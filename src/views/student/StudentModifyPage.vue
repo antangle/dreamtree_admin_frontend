@@ -14,6 +14,7 @@
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import StudentModifyComponent from "@/components/student/StudentModifyComponent.vue";
 import {useRoute, useRouter} from "vue-router";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const router = useRouter()
 
@@ -26,7 +27,14 @@ const moveInfo = () => {
 
   const id = studentId
 
-  router.push({name: 'StudentInfoPage', query: {id}})
+  if(useMemberInfo().getMemberInfo().role === 'admin') {
+
+    router.push({name: 'AdminStudentInfoPage', params: {id}})
+  }
+  if(useMemberInfo().getMemberInfo().role === 'student') {
+
+    router.push({name: 'StudentInfoPage', params: {id}})
+  }
 }
 
 </script>
