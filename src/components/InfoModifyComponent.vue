@@ -8,7 +8,7 @@
       rounded="10"
     >
       <v-img
-        src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+        :src="getImageUrl(info.profileImgUrl)"
       ></v-img>
     </v-avatar>
   </div>
@@ -73,6 +73,7 @@
 import {onMounted, ref, watch} from "vue";
 import {getParentInfo, updateParentInfo} from "@/apis/ParentAPIS";
 import {useRoute} from "vue-router";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const route = useRoute()
 

@@ -13,7 +13,7 @@
       <div class="d-flex flex-nowrap justify-space-between">
         <div class="d-flex flex-no-wrap ma-1">
           <v-avatar size="70px">
-            <v-img src="https://randomuser.me/api/portraits/women/79.jpg"/>
+            <v-img :src="getImageUrl(auth.profileImgUrl)"/>
           </v-avatar>
 
           <div style="margin-left: 15px;">
@@ -45,6 +45,7 @@
 
 import {onMounted, ref} from "vue";
 import {getStudentCollegeAuthLists} from "@/apis/adminAPIS";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const props = defineProps(['searchKeyword', 'pSize', 'pNum'])
 

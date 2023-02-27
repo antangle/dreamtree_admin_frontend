@@ -1,4 +1,5 @@
 import axios from "axios";
+import consts from "@/consts/const";
 
 export const getParentList = async (keyword, page, size) => {
 
@@ -44,4 +45,17 @@ export const softDeleteParentInfo = async (id) => {
 
   return res.data
 
+}
+
+// 이메일로 정보 조회
+export const getEmailParent = async (email) => {
+
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/parent/emailParent/${email}`)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
 }

@@ -13,7 +13,7 @@
           rounded="10"
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+            :src="getImageUrl(student.profileImgUrl)"
           ></v-img>
         </v-avatar>
 
@@ -152,6 +152,8 @@ import {addCertificate, getStudentInfo} from "@/apis/adminAPIS";
 import {onMounted, ref} from "vue";
 import {authCollege} from "@/apis/StudentAPIS";
 import UploadComponent from "@/components/image/UploadComponent.vue";
+import useMemberInfo from "@/store/useMemberInfo";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const props = defineProps(['id'])
 
@@ -168,6 +170,7 @@ const uploadDialog = ref(false)
 const imageListKey = ref(0)
 
 const imageNameList = ref([])
+
 
 // Dialog에서 전송 클릭 시
 const addClickCollege = async () => {

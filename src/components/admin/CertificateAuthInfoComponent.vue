@@ -10,7 +10,7 @@
           rounded="10"
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+            :src="getImageUrl(certificate.url)"
           ></v-img>
         </v-avatar>
       </div>
@@ -18,40 +18,25 @@
 
     <v-divider/>
 
-    <!-- 대학 -->
     <v-list-item>
       <div
         class="d-flex flex-no-wrap justify-md-space-between"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>COLLEGE</v-card-subtitle>
+        <v-card-subtitle>자격증명</v-card-subtitle>
         <v-text>{{ certificate.name }}</v-text>
       </div>
     </v-list-item>
 
     <v-divider/>
 
-    <!-- 전공 -->
     <v-list-item>
       <div
         class="d-flex flex-no-wrap justify-md-space-between"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>MAJOR</v-card-subtitle>
+        <v-card-subtitle>취득일자</v-card-subtitle>
         <v-text>{{ certificate.aquireDate }}</v-text>
-      </div>
-    </v-list-item>
-
-    <v-divider/>
-
-    <!-- 인증파일 -->
-    <v-list-item>
-      <div
-        class="d-flex flex-no-wrap justify-md-space-between"
-        style="margin-right: 50px"
-      >
-        <v-card-subtitle>AUTH_URL</v-card-subtitle>
-        <v-text>{{ certificate.authUrl }}</v-text>
       </div>
     </v-list-item>
 
@@ -67,6 +52,7 @@
 
 import {onMounted, ref} from "vue";
 import {getCertificateAuthInfo, modifyCertificateAuthState} from "@/apis/adminAPIS";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const props = defineProps(['id'])
 

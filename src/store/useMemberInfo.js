@@ -8,7 +8,7 @@ const useMemberInfo = defineStore('useMemberInfo',() => {
 
   const memberInfo = ref({
     id: null,
-    role: null,
+    role: 'student',
     email: null,
     authState: 'yes',
     nickname: null,

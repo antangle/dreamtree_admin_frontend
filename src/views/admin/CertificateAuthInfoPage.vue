@@ -22,7 +22,7 @@ const route = useRoute()
 const certificateId = route.query.id
 const moveAuthManagement = () => {
 
-  router.push({name: 'AuthManagementPage'})
+  router.push({name: 'AuthAdminPage'})
 }
 
 </script>

@@ -13,7 +13,7 @@
           rounded="10"
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+            :src="info.profileImgUrl"
           ></v-img>
         </v-avatar>
 
