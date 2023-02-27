@@ -35,7 +35,7 @@ const pNum = ref(route.query.page || 1)
 const pSize = ref(route.query.size || 10)
 
 const conditions = ref(['total', 'title', 'nickname', 'subCategory', 'category'])
-const orders = ref(['newest', 'title'])
+const orders = ref(['등록순', '제목순'])
 const searchCondition = ref({ keyword: '', condition: '', order: '' })
 
 const clickSearch = (emittedSearchKeyword) => {

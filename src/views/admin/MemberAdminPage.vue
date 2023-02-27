@@ -100,9 +100,6 @@ const moveInfoModifyPage = (id) => {
 // 성현
 const clickSearch = (search) => {
 
-<<<<<<< HEAD
-  searchKeyword.value.keyword = search.keyword
-=======
   console.log(search)
 
   searchCondition.value.keyword = search.keyword
@@ -110,7 +107,6 @@ const clickSearch = (search) => {
   searchCondition.value.condition = search.condition
 
   searchCondition.value.order = search.order
->>>>>>> origin/addProgress_development
 
   console.log('searchConditions...', searchCondition.value)
 
