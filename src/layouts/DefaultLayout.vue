@@ -285,10 +285,10 @@ const onClickLogout = async () => {
 }
 
 .home-button {
-  width: 80px;
-  height: 80px;
-  position: center;
-
+  width: 50px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
 }
 
 </style>
