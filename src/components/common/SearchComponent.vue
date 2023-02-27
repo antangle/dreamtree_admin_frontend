@@ -34,8 +34,6 @@ import {ref} from "vue";
 const emits = defineEmits(['clickSearch'])
 const props = defineProps(['conditions'])
 
-const studentSearchConditionList = ['total', 'nickname', 'email', 'authState']
-
 const selectSearchKeyword = ref({keyword: '', condition: 'total'})
 
 

@@ -39,7 +39,7 @@
             첨부파일(이미지url): {{file.url}}
           </li>
         </ul>
-        <v-btn>레슨조회</v-btn>
+        <v-btn @click="() => emits('moveLesson', program.programId)">레슨조회</v-btn>
         <v-btn @click="dialog = !dialog">삭제</v-btn>
         <v-btn @click="() => updateProgram(program.programId)">수정</v-btn>
 
@@ -70,7 +70,7 @@ import {onMounted, ref} from "vue";
 import ProgramCurriculumDayComponent from "@/components/program/ProgramCurriculumDayComponent.vue";
 import {removeProgram} from "@/apis/adminAPIS";
 
-const emits = defineEmits(['moveProgramModify'])
+const emits = defineEmits(['moveProgramModify', 'moveLesson'])
 
 const programs = ref([])
 

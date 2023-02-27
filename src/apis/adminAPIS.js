@@ -227,10 +227,14 @@ export const getAuthCount = async () => {
 }
 
 // 관리지 신고 조회
-export const adminGetReport = async (id) => {
+export const adminGetReport = async (result) => {
 
   try {
-    const res = await axios.get(`${consts.DOMAIN}/api/report/admin/${id}`)
+    const res = await axios.get(`${consts.DOMAIN}/api/report/list`, {
+      params: {
+        ...result
+      }
+    })
 
     return res.data
   } catch (e) {

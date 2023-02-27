@@ -31,7 +31,7 @@ const reportMovePageNum = (pageNum) => {
   pNum.value = pageNum
 
   router.push({
-    name: "StudentReportPage",
+    name: "ReportAdminPage",
     query: {
       page: pNum.value,
       size: pSize.value,
@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
 
   pNum.value = to.query.page
 
-  if (to.name == 'StudentReportPage') componentKey.value++
+  if (to.name == 'ReportAdminPage') componentKey.value++
 
   next()
 })

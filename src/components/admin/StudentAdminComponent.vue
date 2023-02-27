@@ -65,6 +65,10 @@ const fetchGetList = async () => {
 
   props.searchKeyword.condition = 'total'
 
+  console.log("searchKeyword: ", props.searchKeyword)
+  console.log("pageNum: ", pageNum.value)
+  console.log("pSize: ", props.pSize)
+
   const data = await getStudentLists(props.searchKeyword, pageNum.value, props.pSize);
 
   console.log(data)

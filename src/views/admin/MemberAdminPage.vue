@@ -12,13 +12,15 @@
 
     <v-window v-model="tab">
       <v-window-item value="1">
-        <SearchComponent @clickSearch="clickSearch" />
+        <SearchComponent @clickSearch="clickSearch"
+        :conditions="conditions"
+        />
 
         <StudentAdminComponent
           @movePageNum="movePageNum"
           @moveStudentInfo="moveStudentInfo"
           @moveAuthManagementPage="moveAuthManagementPage"
-          :searchKeyword="searchCondition"
+          :searchKeyword="searchKeyword"
           :pNum="pNum"
           :pSize="pSize"
           :key="componentKey"
@@ -62,9 +64,14 @@ const pSize = ref(route.query.size || 10)
 
 const searchCondition = ref({ keyword: '', condition: '' })
 
-const searchKeyword = ref({ keyword: '', condition: ['total', 'email'] })
+const searchKeyword = ref({
+  keyword: route.query.keyword || '',
+  condition: route.query.condition || ''
+})
 
 const componentKey = ref(0)
+
+const conditions = ref(['total', 'email', 'nickname', 'authState'])
 
 
 const moveAuthManagementPage = () => {
@@ -85,8 +92,6 @@ const moveInfoModifyPage = (id) => {
 
 // 성현
 const clickSearch = (search) => {
-
-  console.log(search)
 
   searchKeyword.value.keyword = search.keyword
 

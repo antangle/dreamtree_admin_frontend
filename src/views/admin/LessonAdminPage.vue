@@ -45,7 +45,7 @@ const clickSearch = (search) => {
 
   searchKeyword.value.condition = search.condition
 
-  router.push({name: "AdminLessonManagementPage",
+  router.push({name: "LessonAdminPage",
     query: {
       keyword: searchKeyword.value.keyword,
       condition: searchKeyword.value.condition,
@@ -58,7 +58,7 @@ const movePageNum = (pageNum) => {
 
   pNum.value = pageNum
 
-  router.push({ name: "AdminLessonManagementPage",
+  router.push({ name: "LessonAdminPage",
     query: {
       ...searchKeyword.value,
       page: pNum.value,
@@ -79,7 +79,7 @@ router.beforeEach((to, from, next)=> {
 
   searchKeyword.value.condition = to.query.condition || 'total'
 
-  if(to.name == 'AdminLessonManagementPage') componentKey.value++
+  if(to.name == 'LessonAdminPage') componentKey.value++
 
   next()
 })

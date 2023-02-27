@@ -7,8 +7,8 @@ const {cookies} = useCookies()
 const useMemberInfo = defineStore('useMemberInfo',() => {
 
   const memberInfo = ref({
-    id: null,
-    role: null,
+    id: 1,
+    role: 'admin',
     email: null,
     nickname: null,
     profileImage: null,

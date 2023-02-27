@@ -3,6 +3,7 @@
   <default-layout>
     <MyProgramListComponent
     @moveProgramModify="moveProgramModify"
+    @moveLesson="moveLesson"
     />
   </default-layout>
 </template>
@@ -11,12 +12,24 @@
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import MyProgramListComponent from "@/components/common/MyProgramListComponent.vue";
 import {useRouter} from "vue-router";
+import useMemberInfo from "@/store/useMemberInfo";
 
 const router = useRouter()
 
 const moveProgramModify = (id) => {
 
   router.push({name: 'ProgramModifyPage', params: {id}})
+}
+
+const moveLesson = (programId) => {
+  const userInfo = useMemberInfo().getMemberInfo()
+  const id = userInfo.id
+  router.push({
+    name: 'MyLessonListPage',
+    params: {
+      id: id
+    },
+    query: {programId}})
 }
 
 </script>

@@ -79,7 +79,7 @@
         <v-text>
           {{ student.college }}
           <span style="position: absolute; right: 20%; background-color: pink; border-radius: 10px; padding: 5px">
-            {{student.authState == 'yes' ? '인증' : student.authState == 'pending' ? '요청 중' : '승인 거절'}}
+            {{student.authState == 'yes' ? '인증' : student.authState == 'pending' ? '요청 중' : student.authState == 'no' ? '승인거절' : '요청필요'}}
           </span></v-text>
       </div>
     </v-list-item>
