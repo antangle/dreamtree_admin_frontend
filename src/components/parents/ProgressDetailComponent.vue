@@ -62,6 +62,8 @@ const setLocalDateString = (str) => {
 
 }
 
+console.log(props.info)
+
 const onClickGetKakaoPay = async () => {
   const memberInfo = useMemberInfo().getMemberInfo()
 
@@ -72,7 +74,8 @@ const onClickGetKakaoPay = async () => {
     role: memberInfo.role,
     quantity: 1,
     totalAmount: props.info.fee,
-    taxFreeAmount: 0
+    taxFreeAmount: 0,
+    progressId: props.info.progressId
   }
 
   /*카카오페이 Ready*/

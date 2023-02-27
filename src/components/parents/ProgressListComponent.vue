@@ -11,7 +11,10 @@
           <v-expansion-panel-title>{{ list.title }}</v-expansion-panel-title>
           <v-expansion-panel-text>
 
-            <ProgressDetailComponent :info="list" />
+            <ProgressDetailComponent
+              :info="list"
+              @paySucceeded="onPaySucceeded"
+            />
 
           </v-expansion-panel-text>
         </v-expansion-panel>
@@ -29,10 +32,13 @@ import {getProgressList} from "@/apis/ProgressAPIS";
 import {useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
 import ProgressDetailComponent from "@/components/parents/ProgressDetailComponent.vue";
-
 const route = useRoute()
 const parentId = parseInt(route.params.id)
 const info = ref([])
+
+const onPaySucceeded = () => {
+  fetchGetProgressList()
+}
 const fetchGetProgressList = async () => {
 
   const res = await getProgressList(parentId)
@@ -42,6 +48,7 @@ const fetchGetProgressList = async () => {
   console.log(info.value)
 
 }
+
 onMounted(() => {
   fetchGetProgressList()
 })

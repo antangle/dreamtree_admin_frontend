@@ -71,9 +71,7 @@
 
 <script setup>
 import {bitToDayParser} from "@/util/dayBitParser";
-import useMemberInfo from "@/store/useMemberInfo";
 import consts from "@/consts/const";
-import {postKakaoPayReadyRequest} from "@/apis/kakaoPayAPIS";
 
 const props = defineProps(['lessonInfo', 'programTitle']);
 const emits = defineEmits(['paySucceeded', 'moveLessonApplyPage'])

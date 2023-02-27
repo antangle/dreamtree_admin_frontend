@@ -26,10 +26,15 @@
       </v-row>
 
       <!--레슨 정보-->
-      <LessonInfoComponent
-        :programDetailInfo="programDetailInfo"
-        @onClickLesson="onClickLesson"
-      ></LessonInfoComponent>
+      <v-row>
+        <v-col>
+          <LessonInfoComponent
+            :programDetailInfo="programDetailInfo"
+            @onClickLesson="onClickLesson"
+          ></LessonInfoComponent>
+
+        </v-col>
+      </v-row>
 
       <!--레슨 상세 정보 모달-->
       <div class="text-center">
@@ -125,7 +130,6 @@ import consts from "@/consts/const";
 import LessonStudentInfoComponent from "@/components/lesson/LessonStudentInfoComponent.vue";
 import LessonInfoComponent from "@/components/lesson/LessonInfoComponent.vue";
 import LessonDetailComponent from "@/components/lesson/LessonDetailComponent.vue";
-import useMemberInfo from "@/store/useMemberInfo";
 import {getImageUrl} from "@/util/imageUrlGetter";
 
 
@@ -186,13 +190,15 @@ const onClickLesson = (index) => {
 const fetchProgramDetailInfo = async () => {
   const data = await getProgramDetailInfo(parseInt(route.params.id))
 
+  if(!data.lessonLists[0].lessonId){
+    data.lessonLists = []
+  }
+
   data.curriculumJson = JSON.parse(data.curriculumJson)
 
   programDetailInfo.value = data
 
 }
-
-const { getMemberInfo } = useMemberInfo()
 
 onMounted(() => {
   fetchProgramDetailInfo()
