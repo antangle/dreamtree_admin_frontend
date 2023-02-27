@@ -15,6 +15,7 @@
       <v-window-item value="1">
         <FromMailComponent
           @movePageNum="fromMailMovePageNum"
+          @moveInfo="moveInfo"
           :pNum="fromMailPNum"
           :pSize="pSize"
           :key="fromMailComponentKey"
@@ -24,6 +25,7 @@
       <v-window-item value="2">
         <ToMailComponent
           @movePageNum="toMailMovePageNum"
+          @moveInfo="moveInfo"
           :pNum="toMailPNum"
           :pSize="pSize"
           :key="toMailComponentKey"
@@ -50,7 +52,8 @@ import {useRoute, useRouter} from "vue-router";
 import ToMailComponent from "@/components/student/ToMailComponent.vue";
 import FromMailComponent from "@/components/student/FromMailComponent.vue";
 import AddMailComponent from "@/components/student/AddMailComponent.vue";
-import {writeEmail} from "@/apis/StudentAPIS";
+import {getEmailStudent, writeEmail} from "@/apis/StudentAPIS";
+import {getEmailParent} from "@/apis/ParentAPIS";
 
 const tab = ref()
 
@@ -68,6 +71,31 @@ const fromMailPNum = ref(route.query.fromPage || 1)
 const toMailComponentKey = ref(0)
 
 const fromMailComponentKey = ref(0)
+
+const moveInfo = async (email) => {
+
+  const stu = await getEmailStudent(email)
+
+  const par = await getEmailParent(email)
+
+  console.log("stu: ", stu)
+  console.log("par: ", par)
+
+  if(stu) moveStudentInfo(stu.studentId)
+
+  if(par) moveParentInfo(par.parentId)
+
+}
+
+const moveStudentInfo = (id) => {
+
+  router.push({name: 'StudentInfoPage', params: {id}})
+}
+
+const moveParentInfo = (id) => {
+
+  router.push({name: 'ParentInfoPage', params: {id}})
+}
 
 // Dialog창에서 전송 클릭 시
 const postMail = async (mail) => {

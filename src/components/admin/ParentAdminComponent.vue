@@ -14,7 +14,7 @@
           >
             <div class="d-flex flex-no-wrap ma-1">
               <v-avatar size="70px">
-                <v-img src="https://randomuser.me/api/portraits/women/79.jpg"/>
+                <v-img :src="getImageUrl(info.profileImgUrl)"/>
               </v-avatar>
 
               <div style="margin-left: 15px;">
@@ -57,6 +57,7 @@
 
 import {onMounted, ref} from "vue";
 import {getParentList, softDeleteParentInfo} from "@/apis/ParentAPIS";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const props = defineProps(['movePage', 'pNum', 'pSize', 'searchCondition'])
 const emits = defineEmits(['onClickMoveInfoModifyPage', 'movePageNum'])

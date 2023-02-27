@@ -14,7 +14,7 @@
           rounded="10"
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+            :src="getImageUrl(student.profileImgUrl)"
           ></v-img>
         </v-avatar>
 
@@ -117,6 +117,7 @@
 
 import {onMounted, ref} from "vue";
 import {getStudentInfo, removeStudent} from "@/apis/adminAPIS";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const props = defineProps(['id'])
 

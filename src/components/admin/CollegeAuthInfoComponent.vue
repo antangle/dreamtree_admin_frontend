@@ -10,7 +10,7 @@
           rounded="10"
         >
           <v-img
-            src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+            :src="getImageUrl(college.url)"
           ></v-img>
         </v-avatar>
 
@@ -48,19 +48,6 @@
     </v-list-item>
 
     <v-divider/>
-
-    <!-- 전공 -->
-    <v-list-item>
-      <div
-        class="d-flex flex-no-wrap justify-md-space-between"
-        style="margin-right: 50px"
-      >
-        <v-card-subtitle>AUTH FILE</v-card-subtitle>
-        <v-text>{{ college.authUrl }}</v-text>
-      </div>
-    </v-list-item>
-
-    <v-divider/>
   </v-list>
 
   <v-btn @click="() => clickAccept(id, 'yes')">수락</v-btn>
@@ -72,6 +59,7 @@
 
 import {onMounted, ref} from "vue";
 import {getCollegeAuthInfo, modifyCollegeAuthState} from "@/apis/adminAPIS";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const props = defineProps(['id'])
 

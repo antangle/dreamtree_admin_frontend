@@ -208,3 +208,16 @@ export const modifyProgram = async (program) => {
     return
   }
 }
+
+// 이메일로 정보 조회
+export const getEmailStudent = async (email) => {
+
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/students/emailStudent/${email}`)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}

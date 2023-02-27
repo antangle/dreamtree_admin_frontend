@@ -21,7 +21,7 @@ const route = useRoute()
 const collegeId = route.query.id
 const moveAuthManagement = () => {
 
-  router.push({name: 'AuthManagementPage'})
+  router.push({name: 'AuthAdminPage'})
 }
 
 </script>

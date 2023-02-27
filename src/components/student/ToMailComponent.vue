@@ -18,9 +18,6 @@
           <div class="d-flex flex-nowrap justify-space-between"
                @click="() => getToMail(mail.mailId)">
             <div class="d-flex flex-no-wrap ma-1">
-              <v-avatar size="70px">
-                <v-img src="https://randomuser.me/api/portraits/women/79.jpg"/>
-              </v-avatar>
 
               <div style="margin-left: 15px;">
                 <v-list-item-title v-text="mail.toEmail"></v-list-item-title>
@@ -59,6 +56,11 @@
       <v-card>
         <v-card-text style="text-align: center">
           <div class="v-container">
+            받는사람: {{toMailInfo.toEmail}} <br>
+            <v-card-item
+              prepend-icon="fa-solid fa-circle-info"
+              @click="emits('moveInfo', toMailInfo.toEmail)"
+            />
             보낸사람: {{ toMailInfo.fromEmail }} <br>
             제목: {{ toMailInfo.title }} <br>
             내용: {{ toMailInfo.content }} <br>
@@ -84,7 +86,7 @@ import useMemberInfo from "@/store/useMemberInfo";
 
 const props = defineProps(['pNum', 'pSize'])
 
-const emits = defineEmits(['movePageNum'])
+const emits = defineEmits(['movePageNum', 'moveInfo'])
 
 const toMails = ref([])
 

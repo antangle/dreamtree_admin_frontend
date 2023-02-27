@@ -20,7 +20,6 @@ const router = useRouter()
 
 const id = route.params.id
 
-
 const moveInfoModifyPage = () => {
 
   router.push({ name: 'InfoModifyPage' , params: {id: id} })
