@@ -240,6 +240,13 @@ const onClickSubCategory = async (subCategoryId) => {
 /** 로그아웃 **/
 const onClickLogout = async () => {
 
+  cookies.remove("loginId")
+  cookies.remove("loginRole")
+  cookies.remove("loginEmail")
+  cookies.remove('loginNickname')
+  cookies.remove('loginProfileImg')
+  cookies.remove('loginThumbnailImg')
+
   if (window.Kakao.Auth.getAccessToken()) {
 
     console.log("Before...", window.Kakao.Auth.getAccessToken())
@@ -250,12 +257,7 @@ const onClickLogout = async () => {
       // 쿠키 삭제 및 store/memberInfo 변경
       console.log("After...", window.Kakao.Auth.getAccessToken())
 
-      cookies.remove("loginId")
-      cookies.remove("loginRole")
-      cookies.remove("loginEmail")
-      cookies.remove('loginNickname')
-      cookies.remove('loginProfileImg')
-      cookies.remove('loginThumbnailImg')
+
 
       useMemberInfo().initMemberInfo()
       memberInfo.value = useMemberInfo().getMemberInfo()
@@ -263,13 +265,6 @@ const onClickLogout = async () => {
 
     } catch (error) { console.log(error) }
   } else {
-
-    cookies.remove("loginId")
-    cookies.remove("loginRole")
-    cookies.remove("loginEmail")
-    cookies.remove('loginNickname')
-    cookies.remove('loginProfileImg')
-    cookies.remove('loginThumbnailImg')
 
     alert("로그인이 필요합니다!")
 

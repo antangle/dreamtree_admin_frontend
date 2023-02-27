@@ -320,6 +320,20 @@ export const removeLesson = async (id) => {
   }
 }
 
+// 레슨 마감
+export const closeLessonStatus = async (id) => {
+
+  try {
+    const res = await axios.put(`${consts.DOMAIN}/api/program/closeLesson`, {
+      id: id
+    })
+    return res.data
+  } catch (e) {
+    console.log(e)
+    return
+  }
+}
+
 // 프로그램 수정
 
 export const modifyProgram = async (program) => {

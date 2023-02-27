@@ -181,6 +181,19 @@ export const myLessonList = async (id) => {
   }
 }
 
+// 수강신청 리스트
+export const myAppliedLessonList = async (id) => {
+
+  try {
+    const res = await axios.get(`${consts.DOMAIN}/api/program/myAppliedLesson/${id}`)
+
+    return res.data
+  } catch (e) {
+
+    return
+  }
+}
+
 // 프로그램에 레슨 있는지
 export const getProgramLessonCount = async (id) => {
 

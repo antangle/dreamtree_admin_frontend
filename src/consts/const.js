@@ -8,6 +8,16 @@ const consts = {
   //kakaopay
   PAY_NUMBER: "payNumber",
 
+  //lesson state
+  OPEN: 'open',
+  INPROGRESS: 'inProgress',
+  CLOSE: 'close',
+
+  //progress state
+  PENDING: 'pending',
+  REQUEST: 'request',
+  SUCCESS: 'success',
+
   // api
   DOMAIN: DOMAIN,
   IMG_DOMAIN: `${DOMAIN}/api/minio`,

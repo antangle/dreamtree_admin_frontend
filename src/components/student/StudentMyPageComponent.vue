@@ -32,7 +32,7 @@
     <v-list-item
       prepend-icon="fa-solid fa-caret-right"
       title="출석 관리"
-      @click="() => emits(`onClickMoveLessonAppliedPage`)"
+      @click="() => emits(`onClickMoveAttendancePage`)"
     ></v-list-item>
 
     <v-divider/>
