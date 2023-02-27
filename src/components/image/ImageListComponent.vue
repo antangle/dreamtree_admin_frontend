@@ -1,13 +1,14 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="imageName in imageNames" :key="imageName">
+      <v-col v-for="image in imageNames" :key="image">
         <v-img
-          :src="`${consts.IMG_DOMAIN}/t_${imageName}`"
+          v-if="image.contentType != 'video/mp4'"
+          :src="`${consts.IMG_DOMAIN}/t_${image.filename}`"
           max-height="150"
           class="bg-grey-lighten-2"
           cover
-          @click="() => deleteImage(imageName)"
+          @click="() => deleteImage(image)"
         >
           <template v-slot:placeholder>
             <div class="d-flex align-center justify-center fill-height">
@@ -24,7 +25,7 @@
 </template>
 
 <script setup>
-import {ref, watch} from "vue";
+import {ref} from "vue";
 import consts from "@/consts/const";
 import {deleteMinioImage} from "@/apis/api";
 
@@ -33,11 +34,12 @@ const emits = defineEmits(['onImageDeleted'])
 
 //리로딩 시 imageNames 업데이트됨
 const imageNames = ref(props.imageNameList)
-const deleteImage = async (imageName) => {
-  //parameter 배열로 받음
-  await deleteMinioImage([imageName])
 
-  imageNames.value = imageNames.value.filter(e => e !== imageName)
+const deleteImage = async (image) => {
+  //parameter 배열로 받음
+  await deleteMinioImage([image.filename])
+
+  imageNames.value = imageNames.value.filter(e => e !== image)
 
   emits('onImageDeleted', imageNames.value)
 }

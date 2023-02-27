@@ -17,6 +17,7 @@ import VueWordCloud from "vuewordcloud";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import VueDatePicker from "@vuepic/vue-datepicker"
 import VueCookies from 'vue-cookies';
+import VueVideoPlayer from '@videojs-player/vue'
 import '@vuepic/vue-datepicker/dist/main.css'
 import { globalCookiesConfig } from "vue3-cookies";
 
@@ -30,6 +31,7 @@ const app = createApp(App)
   .component(VueWordCloud.name, VueWordCloud)
   .component('font-awesome-icon', FontAwesomeIcon)
   .component('VueDatePicker', VueDatePicker)
+  .use(VueVideoPlayer)
 registerPlugins(app)
 
 window.Kakao.init("e56cba4e052f889b4c371c2bb851820d");
