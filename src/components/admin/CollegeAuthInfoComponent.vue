@@ -26,10 +26,10 @@
     <!-- 대학 -->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>COLLEGE</v-card-subtitle>
+        <v-card-subtitle>대학교</v-card-subtitle>
         <v-text>{{ college.college }}</v-text>
       </div>
     </v-list-item>
@@ -39,10 +39,10 @@
     <!-- 전공 -->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>MAJOR</v-card-subtitle>
+        <v-card-subtitle>전공</v-card-subtitle>
         <v-text>{{ college.major }}</v-text>
       </div>
     </v-list-item>
@@ -50,8 +50,10 @@
     <v-divider/>
   </v-list>
 
-  <v-btn @click="() => clickAccept(id, 'yes')">수락</v-btn>
-  <v-btn @click="() => clickAccept(id, 'no')">거절</v-btn>
+  <div style="float: right; margin-right: 3%; margin-top: 1%">
+    <v-btn @click="() => clickAccept(id, 'yes')">수락</v-btn>
+    <v-btn @click="() => clickAccept(id, 'no')">거절</v-btn>
+  </div>
 
 </template>
 

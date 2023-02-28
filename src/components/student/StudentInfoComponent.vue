@@ -1,7 +1,7 @@
 <template>
   <v-list lines="two">
 
-    <v-list-subheader>Parent Info</v-list-subheader>
+    <v-list-subheader>Profile</v-list-subheader>
 
     <!--회원 프로필 이미지 & 닉네임-->
     <v-list-item>
@@ -37,10 +37,10 @@
     <!--회원 이메일-->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>EMAIL</v-card-subtitle>
+        <v-card-subtitle>이메일</v-card-subtitle>
         <v-text>{{ student.email }}</v-text>
       </div>
     </v-list-item>
@@ -50,10 +50,10 @@
     <!--회원 생년월일-->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>BIRTH</v-card-subtitle>
+        <v-card-subtitle>생일</v-card-subtitle>
         <v-text>{{ student.birth }}</v-text>
       </div>
     </v-list-item>
@@ -61,10 +61,10 @@
     <!--회원 성별-->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>GENDER</v-card-subtitle>
+        <v-card-subtitle>성별</v-card-subtitle>
         <v-text>{{ student.gender }}</v-text>
       </div>
     </v-list-item>
@@ -72,13 +72,13 @@
     <!--회원 대학-->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>COLLEGE</v-card-subtitle>
+        <v-card-subtitle>대학교</v-card-subtitle>
         <v-text>
           {{ student.college }}
-          <span style="position: absolute; right: 20%; background-color: pink; border-radius: 10px; padding: 5px">
+          <span style="position: absolute; left: 20%; background-color: pink; border-radius: 10px; padding: 5px">
             {{student.authState == 'yes' ? '인증' : student.authState == 'pending' ? '요청 중' : student.authState == 'no' ? '승인거절' : '요청필요'}}
           </span></v-text>
       </div>
@@ -87,19 +87,19 @@
     <!--회원 전공-->
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
-        <v-card-subtitle>MAJOR</v-card-subtitle>
+        <v-card-subtitle>전공</v-card-subtitle>
         <v-text>{{ student.major }}</v-text>
       </div>
     </v-list-item>
   </v-list>
 
-  <v-btn @click="dialog = !dialog">인증요청</v-btn>
+  <v-btn class="auth-btn" @click="dialog = !dialog">인증요청</v-btn>
 
   <!-- post dialog -->
-  <v-dialog v-model="dialog">
+  <v-dialog style="max-width: 45%" v-model="dialog">
 
     <v-card>
       <v-card-text style="text-align: center">
@@ -236,5 +236,18 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+.auth-btn {
+  background-color: #e57373;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+
+  float: right;
+  margin: 3%;
+}
 
 </style>

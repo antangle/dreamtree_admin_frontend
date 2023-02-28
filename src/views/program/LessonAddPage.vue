@@ -29,6 +29,7 @@
             multiple
             v-model="lessonForm.day"
           >
+
             <v-chip
               v-for="tag in ['월', '화', '수', '목', '금', '토', '일']" :key="tag"
             >
@@ -91,6 +92,7 @@
         </v-col>
       </v-row>
 
+      <div style="float: right; margin: 2%">
       <v-row>
         <v-col>
           <CreateButtonComponent
@@ -99,6 +101,7 @@
           ></CreateButtonComponent>
         </v-col>
       </v-row>
+      </div>
     </v-container>
 
     <v-snackbar

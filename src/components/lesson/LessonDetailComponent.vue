@@ -96,5 +96,45 @@ const checkClose = () => {
 </script>
 
 <style scoped>
+/* 가격 스타일 */
+.v-row:nth-child(6) .v-col {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 1rem;
+}
 
+/* 장소 스타일 */
+.v-row:nth-child(7) .v-col {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+/* 문의하기 버튼 스타일 */
+.v-btn {
+  color: #fff;
+  background-color: #4caf50;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.v-btn:hover {
+  background-color: #3e8e41;
+}
+
+/* 마감 텍스트 스타일 */
+.v-row:last-child .v-col {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f44336;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
 </style>

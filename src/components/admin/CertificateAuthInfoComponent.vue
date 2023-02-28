@@ -20,7 +20,7 @@
 
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
         <v-card-subtitle>자격증명</v-card-subtitle>
@@ -32,7 +32,7 @@
 
     <v-list-item>
       <div
-        class="d-flex flex-no-wrap justify-md-space-between"
+        class="d-flex flex-no-wrap"
         style="margin-right: 50px"
       >
         <v-card-subtitle>취득일자</v-card-subtitle>
@@ -43,9 +43,10 @@
     <v-divider/>
 
   </v-list>
-  <v-btn @click="() => clickAccept(id, 'yes')">수락</v-btn>
-  <v-btn @click="() => clickAccept(id, 'no')">거절</v-btn>
-
+  <div style="float: right; margin-right: 3%; margin-top: 1%">
+    <v-btn @click="() => clickAccept(id, 'yes')">수락</v-btn>
+    <v-btn @click="() => clickAccept(id, 'no')">거절</v-btn>
+  </div>
 </template>
 
 <script setup>

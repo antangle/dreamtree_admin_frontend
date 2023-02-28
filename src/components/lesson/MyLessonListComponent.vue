@@ -28,24 +28,45 @@
               </v-row>
             </v-expansion-panel-title>
             <v-expansion-panel-text>
-              레슨 기간 : {{ lesson.startDate }} ~ {{ lesson.endDate }} <br>
-              장소: {{ lesson.place }} <br>
-              모집 기간: {{ lesson.expireStartDate }} ~ {{ lesson.expireEndDate }} <br>
-              모집 인원: {{ lesson.personnel }}명 <br>
-              주 {{ lesson.day }} 회 {{ lesson.lessonLength }}시간<br>
-              총 {{ lesson.lessonTime }}시간 <br>
-              금액: {{ lesson.fee.toLocaleString() }}원 <br>
-              <hr>
-              수강생 정보 <br>
-              <div>
-                <ul style="list-style: none">
-                  <li v-for="progress in lesson.progressList" :key="progress.progressId">
-                    상태: {{ progress.state }}
-                    수강생 이름: {{ progress.childName }}
-                  </li>
-                </ul>
-              </div>
+              <v-container>
+                <v-row no-gutters>
+                  <v-col cols="2"><p>수강생</p></v-col>
+                  <v-col>
+                  <ul style="list-style: none">
+                    <li v-for="progress in lesson.progressList" :key="progress.progressId">
+                      이름: {{ progress.childName }} &nbsp; &nbsp; &nbsp;
+                      상태: <v-chip>{{ progress.state == 'success' ? '결제완료' : progress.state == 'pending' ? '결제 요청 중' : '미결제'}}</v-chip>
+                    </li>
+                  </ul>
+                  </v-col>
+                </v-row>
 
+                <v-row>
+                  <v-col cols="2"><p>레슨 회차</p></v-col>
+                  <v-col>{{ lesson.lessonTime }}</v-col>
+                  <v-col cols="2"><p>레슨 시간</p></v-col>
+                  <v-col>{{ lesson.lessonLength }}</v-col>
+                </v-row>
+
+                <v-row>
+                  <v-col cols="2"><p>레슨 시작일</p></v-col>
+                  <v-col>{{ setLocalDateString(lesson.startDate) }}</v-col>
+                  <v-col cols="2"><p>레슨 종료일</p></v-col>
+                  <v-col>{{ setLocalDateString(lesson.endDate) }}</v-col>
+                </v-row>
+
+                <v-row>
+                  <v-col cols="2"><p>장소</p></v-col>
+                  <v-col>{{ lesson.place }}</v-col>
+                  <v-col cols="2"><p>수강료</p></v-col>
+                  <v-col>{{ lesson.fee.toLocaleString() }} 원</v-col>
+                </v-row>
+
+                <v-row justify="space-between">
+                  <v-col cols="2"><p>상태</p></v-col>
+                  <v-col><v-chip>{{ lesson.state == 'inProgress' ? '진행 중' : lesson.state == 'open' ? '모집 중' : '마감'   }}</v-chip></v-col>
+                </v-row>
+              </v-container>
               <v-chip
                 size="small"
                 label
@@ -140,6 +161,13 @@ const closeLesson = async (id, state) => {
   closeDialog.value = !closeDialog.value
 
   await fetchGetList()
+}
+
+const setLocalDateString = (str) => {
+
+  const date = new Date(str)
+  return date.toLocaleDateString()
+
 }
 
 const deleteLesson = async (id) => {

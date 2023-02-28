@@ -12,12 +12,12 @@
     <tr v-for="certificate in certificates">
       <td>{{ certificate.name }}</td>
       <td>{{ certificate.aquireDate }}</td>
-      <td>{{ certificate.authState == 'pending' ? '요청 중' : certificate.authState == 'yes' ? '인증' : '거절' }}</td>
+      <td><v-chip>{{ certificate.authState == 'pending' ? '요청 중' : certificate.authState == 'yes' ? '인증' : '거절' }}</v-chip></td>
     </tr>
     </tbody>
   </v-table>
 
-  <v-btn @click="dialog = !dialog">인증 요청</v-btn>
+  <v-btn class="auth-btn" @click="dialog = !dialog">인증 요청</v-btn>
 
   <!-- post dialog -->
   <v-dialog v-model="dialog">
@@ -176,5 +176,18 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+.auth-btn {
+  background-color: #e57373;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+
+  float: right;
+  margin: 3%;
+}
 
 </style>

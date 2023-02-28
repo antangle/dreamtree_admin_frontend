@@ -148,6 +148,7 @@
 
         </v-sheet>
         <AddButtonComponent
+          v-if="checkAddBtnPageName()"
           @onClickMoveProgramAddPage="movePage(consts.PROGRAM_ADD_PAGE)"
           @onClickMoveLessonAddPage="movePage(consts.LESSON_ADD_PAGE)"
           @onClickMoveRequestAddPage="movePage('RequestAddPage')"
@@ -162,7 +163,7 @@
 <script setup>
 
 import {onBeforeMount, ref} from "vue";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import AddButtonComponent from "@/components/common/AddButtonComponent.vue";
 import {getLayoutInfo} from "@/apis/api";
 import consts from "@/consts/const";
@@ -183,9 +184,21 @@ const member = ref({
 })
 const drawer = ref()
 const router = useRouter()
+const route = useRoute()
 const { cookies } = useCookies()
 const memberInfo = ref(useMemberInfo().getMemberInfo())
 const role = memberInfo.value.role
+
+const addBtnPageName = ['HomePage', 'ProgramListPage', 'ProgramDetailPage', 'RequestListPage']
+
+const checkAddBtnPageName = () => {
+
+  for(let i=0; i<addBtnPageName.length; i++) {
+    if(route.name == addBtnPageName[i]) return true
+  }
+
+  return false
+}
 
 console.log("member......", memberInfo)
 
@@ -271,6 +284,12 @@ const onClickLogout = async () => {
   }
 
 }
+
+router.beforeEach((to, from, next) => {
+  console.log(to, from)
+  next()
+})
+
 </script>
 
 <style scoped>
