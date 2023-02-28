@@ -5,7 +5,7 @@
     <div class="vue-word-cloud-wrapper">
       <vue-word-cloud
         :words="words"
-        :color="([, weight]) => weight > 10 ? '#8B63A6' : weight > 5 ? '#DC90AA' : '#79717A'"
+        :color="([, weight]) => weight > 10 ? '#5B407F' : weight > 5 ? '#D95F76' : '#595959'"
         font-family="Roboto"
       >
         <template v-slot="{text, weight, word}">
@@ -61,7 +61,7 @@ onMounted(() => {
 
 <style scoped>
 .background {
-  background-image: url("public/cherryblossom_icon.png");
+  background-image: url("public/cherryblossom_home.png");
   background-size: cover;
   background-color: rgb(255, 243, 237);
   background-position-y: 25px;

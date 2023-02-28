@@ -23,7 +23,7 @@
         </v-card-title>
 
         <v-btn
-          v-if="info.id === memberInfo.id"
+          v-if="info.id === parseInt(memberInfo.id)"
           flat
           color="grey"
           size="small"
@@ -55,7 +55,7 @@
         style="margin-right: 50px"
       >
         <v-card-subtitle>BIRTH</v-card-subtitle>
-        <v-text>{{ setLocalDateString(info.birth) }}</v-text>
+        <v-text>{{ info.birthday }}</v-text>
       </div>
     </v-list-item>
 
@@ -72,10 +72,10 @@ const props = defineProps(['id'])
 const emits = defineEmits(['onClickMoveInfoModifyPage'])
 const memberInfo = useMemberInfo().getMemberInfo()
 
-const info = ref({id: null, email: null, nickname: null, birth: null, profileImgUrl: null})
+const info = ref({id: null, email: null, nickname: null, birthday: null, profileImgUrl: null})
 const fetchGetInfo = async () => {
 
-  const res = await getParentInfo(props.id)
+  const res = await getParentInfo(memberInfo.id)
   console.log(res)
   info.value = res
 
@@ -85,13 +85,6 @@ onMounted(() => {
   fetchGetInfo()
 })
 
-// 날짜 yyyy.MM.DD 변환 함수
-const setLocalDateString = (str) => {
-
-  const date = new Date(str)
-  return date.toLocaleDateString()
-
-}
 
 
 </script>
