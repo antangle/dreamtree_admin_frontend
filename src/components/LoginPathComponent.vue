@@ -1,29 +1,30 @@
 <template>
   <v-container>
-    <v-row class="align-center">
-        <v-col>
+    <v-row align-content="end">
+      <v-col class="d-flex justify-center align-end">
+        <v-sheet>
           <v-img src="public/bachelor_cap_icon.png" width="200"
             @click="() => pathValue = 'student'"
           >
           </v-img>
-
-          <div display="flex">
+          <div class="d-flex justify-center">
             <strong>대학생</strong>
             <text>으로 로그인</text>
           </div>
-        </v-col>
-
-        <v-col>
+        </v-sheet>
+      </v-col>
+      <v-col class="d-flex justify-center align-end">
+        <v-sheet>
           <v-img src="public/test_icon.png" width="180"
             @click="() => pathValue = 'parent'"
           >
           </v-img>
-
-          <div display="flex">
+          <div class="d-flex justify-center">
             <strong>부모님</strong>
             <text>으로 로그인</text>
           </div>
-        </v-col>
+        </v-sheet>
+      </v-col>
     </v-row>
   </v-container>
 </template>
