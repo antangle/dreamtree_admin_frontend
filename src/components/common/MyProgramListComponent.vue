@@ -36,11 +36,18 @@
           </v-col>
         </v-row>
         총회차: {{program.times}} <br>
-        <ul style="list-style: none">
-          <li v-for="file in program.fileList" :key="file.fileId">
-            첨부파일(이미지url): {{file.url}}
-          </li>
-        </ul>
+
+        <v-row>
+          <v-col
+            v-for="file in program.fileList" :key="file.fileId"
+
+          >
+            <v-img
+              :src="getImageUrl(file.url)"
+            ></v-img>
+
+          </v-col>
+        </v-row>
         <v-btn @click="() => emits('moveLesson', program.programId)">레슨조회</v-btn>
         <v-btn @click="dialog = !dialog">삭제</v-btn>
         <v-btn @click="() => updateProgram(program.programId)">수정</v-btn>
@@ -72,6 +79,7 @@ import {onMounted, ref} from "vue";
 import ProgramCurriculumDayComponent from "@/components/program/ProgramCurriculumDayComponent.vue";
 import {removeProgram} from "@/apis/adminAPIS";
 import useMemberInfo from "@/store/useMemberInfo";
+import {getImageUrl} from "@/util/imageUrlGetter";
 
 const emits = defineEmits(['moveProgramModify', 'moveLesson'])
 

@@ -23,6 +23,14 @@
 
     <v-list-item
       prepend-icon="fa-solid fa-caret-right"
+      title="요청 글 조회"
+      @click="() => emits('onClickMoveAttendanceList')"
+    ></v-list-item>
+
+    <v-divider/>
+
+    <v-list-item
+      prepend-icon="fa-solid fa-caret-right"
       title="회원정보 조회 및 수정"
       @click="() => emits(`onClickMoveInfo`)"
     ></v-list-item>

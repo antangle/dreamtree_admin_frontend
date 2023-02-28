@@ -5,7 +5,7 @@
     <div class="vue-word-cloud-wrapper">
       <vue-word-cloud
         :words="words"
-        :color="([, weight]) => weight > 10 ? '#FF8787C4' : weight > 5 ? '#424242' : '#79717A'"
+        :color="([, weight]) => weight > 10 ? '#8B63A6' : weight > 5 ? '#DC90AA' : '#79717A'"
         font-family="Roboto"
       >
         <template v-slot="{text, weight, word}">
