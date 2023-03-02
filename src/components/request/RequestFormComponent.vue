@@ -120,7 +120,7 @@ onMounted(() => {
 })
 
 /** validation **/
-let valid = false
+let valid = true
 let validAlertText = ref('')
 
 for (const key in requestForm) {
