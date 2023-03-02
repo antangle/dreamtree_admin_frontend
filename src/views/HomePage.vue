@@ -64,7 +64,7 @@ onMounted(() => {
   background-image: url("public/cherryblossom_home2.png");
   background-size: cover;
   background-color: rgb(255, 243, 237);
-  background-position-y: 25px;
+  background-position-y: 1%;
   background-position-x: -40px;
   height: 900px;
 }
