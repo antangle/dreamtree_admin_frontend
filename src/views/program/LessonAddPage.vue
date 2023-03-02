@@ -16,7 +16,7 @@
       <v-row>
         <v-col>
           레슨기간 설정
-          <VueDatePicker v-model="lessonForm.date" range placeholder="레슨기간을 설정하십시오"/>
+          <VueDatePicker v-model="lessonForm.date" :enable-time-picker="false" range placeholder="레슨기간을 설정하십시오"/>
         </v-col>
       </v-row>
 
@@ -88,7 +88,7 @@
 
       <v-row>
         <v-col>
-          <VueDatePicker v-model="lessonForm.expireDate" range/>
+          <VueDatePicker v-model="lessonForm.expireDate" :enable-time-picker="false" range/>
         </v-col>
       </v-row>
 
