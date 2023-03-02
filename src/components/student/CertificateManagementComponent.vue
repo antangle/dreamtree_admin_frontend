@@ -152,7 +152,7 @@ const addClickCertificate = async () => {
     studentId: props.id,
     name: addCertificateInfo.value.name,
     aquireDate: aquireDate,
-    url: imageNameList.value[0]
+    url: imageNameList.value[0].filename
   }
 
   console.log(certificate)

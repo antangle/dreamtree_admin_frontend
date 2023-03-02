@@ -197,7 +197,7 @@ const addClickCollege = async () => {
     studentId: props.id,
     college: addCollegeInfo.value.college,
     major: addCollegeInfo.value.major,
-    url: imageNameList.value[0]
+    url: imageNameList.value[0].filename
   }
 
   await authCollege(college)
