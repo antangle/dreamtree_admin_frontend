@@ -6,10 +6,9 @@
       <vue-word-cloud
         :words="words"
         :color="([, weight]) => weight > 10 ? '#5B407F' : weight > 5 ? '#D95F76' : '#595959'"
-        font-family="Roboto"
       >
         <template v-slot="{text, weight, word}">
-          <div :title="weight" style="cursor: pointer;" @click="() => onClickWord(word[2])">
+          <div :title="weight" style="cursor: pointer; font-family: 'Cafe24SsurroundAir'" @click="() => onClickWord(word[2])">
             {{ text }}
           </div>
         </template>
@@ -31,6 +30,7 @@ import consts from "@/consts/const";
 const router = useRouter()
 
 const words = ref([])
+const rotate = ref({from: -60, to: 60, numOfOrientation: 5 })
 
 const fetchWordCloudInfo = async () => {
   const data = await getWordCloudInfo()
@@ -60,6 +60,20 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Noto+Serif+KR:wght@700&family=Single+Day&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Gugi&family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Noto+Serif+KR:wght@700&family=Single+Day&display=swap');
+@font-face {
+  font-family:'Cafe24Oneprettynight';
+  src: url('@/assets/fonts/Cafe24Oneprettynight.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family:'Cafe24SsurroundAir';
+  src: url('@/assets/fonts/Cafe24SsurroundAir.ttf') format('truetype');
+  font-weight: 400;
+}
+
+
 .background {
   background-image: url("public/cherryblossom_home2.png");
   background-size: cover;

@@ -206,8 +206,7 @@ const onClickLesson = (index) => {
 const fetchProgramDetailInfo = async () => {
   const data = await getProgramDetailInfo(parseInt(route.params.id))
 
-  console.log(data)
-  if(!data.lessonLists || !data.lessonLists[0].lessonId){
+  if(!data.lessonLists[0].lessonId){
     data.lessonLists = []
   }
 
