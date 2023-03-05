@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 요청글 작성 페이지 -->
+
 <template>
   <DefaultLayout>
 

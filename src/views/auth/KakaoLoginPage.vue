@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 카카오 로그인 페이지 -->
+
 <template>
   <DefaultLayout>
 

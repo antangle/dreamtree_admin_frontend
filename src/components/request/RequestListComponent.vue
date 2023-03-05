@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 요청글 리스트 조회 컴포넌트 -->
+
 <template>
   <v-container>
     <v-list lines="one" class="ma-2">

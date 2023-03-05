@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 학부모 마이 페이지 -->
+
 <template>
     <DefaultLayout>
 

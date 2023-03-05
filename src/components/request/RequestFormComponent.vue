@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 요청글 작성 양식 컴포넌트 -->
+
 <template>
   <v-form>
     <v-container style="margin: 10px" >

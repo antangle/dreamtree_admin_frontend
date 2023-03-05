@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- Admin 페이지 Parent 회원 관리 컴포넌트 -->
+
 <template>
   <v-list lines="three">
 

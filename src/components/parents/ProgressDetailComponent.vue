@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 수강 프로그램 상세 조회 컴포넌트 -->
+
 <template>
   <v-container>
     <v-row no-gutters>

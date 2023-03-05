@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 회원 역할별 마이페이지 -->
+
 <template>
   <DefaultLayout>
 

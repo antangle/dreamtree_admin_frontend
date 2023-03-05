@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 학부모 회원 정보 조회 페이지 -->
+
 <template>
   <DefaultLayout>
 

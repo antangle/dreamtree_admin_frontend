@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- Parent 회원 상세 조회 컴포넌트-->
+
 <template>
   <v-list lines="two">
 
