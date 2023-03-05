@@ -1,3 +1,5 @@
+
+<!--이승윤 ver0.1-->
 const DOMAIN = "http://localhost:8081"
 
 const consts = {

@@ -1,3 +1,4 @@
+<!--이승윤 ver0.1-->
 //list 받아서 bit로 치환
 /*
 * 월:0
@@ -8,6 +9,7 @@
 * 토:5
 * 일:6
 * */
+
 export function dayToBitParser(day){
   let bit = 0
   day.map(item => {
