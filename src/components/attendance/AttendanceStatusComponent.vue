@@ -17,7 +17,7 @@
 const props = defineProps(['attendanceStatus'])
 const setStatusColor = (i) => {
   if(i == 0) return 'bg-white'
-  if(i == 1) return 'bg-red'
+  if(i == 1) return 'bg-green'
   if(i == 2) return 'bg-grey'
 }
 </script>
