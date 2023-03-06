@@ -204,6 +204,8 @@ export const getCertificateList = async (id) => {
 // 자격증 추가
 export const addCertificate = async (certificate) => {
 
+console.log(certificate)
+
   try {
     const res = await axios.post(`${consts.DOMAIN}/api/certificate/form`, certificate)
 

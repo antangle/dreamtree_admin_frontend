@@ -51,7 +51,7 @@ const memberInfo = useMemberInfo().getMemberInfo()
 .horizontal {
   background: transparent;
   border-radius: 4px;
-  position: absolute;
+  position: fixed;
   bottom: 1%;
   left: 90%;
   transform: translate(-50%, -50%);

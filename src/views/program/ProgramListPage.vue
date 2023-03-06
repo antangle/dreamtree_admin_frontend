@@ -37,6 +37,7 @@ const searchOptions = ref({
   subCategoryId: route.query.subCategoryId || 0
 })
 
+
 //검색 버튼 클릭시
 const onClickSearch = (emittedSearchOptions) => {
   objectMapper(searchOptions.value, emittedSearchOptions)

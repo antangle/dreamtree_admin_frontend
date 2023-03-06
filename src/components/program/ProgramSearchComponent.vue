@@ -7,14 +7,14 @@
         <v-select
           v-model="searchOptions.condition"
           label="검색조건"
-          :items="['total', 'title', 'email', 'nickname']"
+          :items="['전체', 'title', 'email', 'nickname']"
         ></v-select>
       </v-col>
       <v-col cols="2">
         <v-select
           v-model="searchOptions.order"
           label="정렬"
-          :items="['newest', 'times']"
+          :items="['최신순', 'times']"
         ></v-select>
       </v-col>
       <v-col cols="5">
@@ -39,6 +39,7 @@
 <script setup>
 const emits = defineEmits(['clickSearch'])
 const props = defineProps(['searchOptions'])
+
 
 </script>
 

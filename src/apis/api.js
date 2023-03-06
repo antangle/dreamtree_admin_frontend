@@ -90,6 +90,7 @@ export const postProgramForm = async (programFormDTO) => {
 
 export const postLessonForm = async (lessonFormDTO) => {
   try {
+    console.log(lessonFormDTO)
     const res = await axios.post(`${consts.DOMAIN}/api/lesson/form/`, lessonFormDTO)
     return res.data
   } catch (e){

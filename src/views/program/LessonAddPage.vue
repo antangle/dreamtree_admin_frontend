@@ -192,13 +192,13 @@ const saveLessonForm = async () => {
   if(!lessonForm.value.day){
     text.value = 'day'
     snackbar.value = true
-    return
+    // return
   }
 
   if(!lessonForm.value.time){
     text.value = 'time'
     snackbar.value = true
-    return
+    // return
   }
 
   objectMapper(lessonFormDTO, {
@@ -224,7 +224,7 @@ const saveLessonForm = async () => {
   lessonFormDTO.day = dayToBitParser(lessonForm.value.day)
   if(!flag){
     snackbar.value = true
-    return
+    // return
   }
 
   await postLessonForm(lessonFormDTO)
