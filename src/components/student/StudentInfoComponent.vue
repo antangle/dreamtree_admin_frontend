@@ -1,3 +1,5 @@
+<!-- 임성현 ver.0.1 -->
+
 <template>
   <v-list lines="two">
 
@@ -7,7 +9,7 @@
     <v-list-item>
       <div class="d-flex flex-no-wrap justify-center">
         <v-avatar
-          style="margin-left: 20px"
+          style="margin-left: 20px; width: 700px"
           class="ma-1"
           size="250"
           rounded="10"

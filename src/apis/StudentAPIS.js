@@ -84,6 +84,7 @@ export const removeEmail = async (id) => {
 // 대학 인증 요청
 export const authCollege = async (college) => {
 
+  console.log("college: ", college)
   try {
     const res = await axios.post(`${consts.DOMAIN}/api/students/file/`, college)
 
