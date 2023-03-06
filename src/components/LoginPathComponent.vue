@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 로그인 경로 설정 컴포넌트 -->
+
 <template>
   <v-container>
     <v-row align-content="end">

@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- Parent MyPage 컴포넌트-->
+
 <template>
   <v-list lines="two">
 

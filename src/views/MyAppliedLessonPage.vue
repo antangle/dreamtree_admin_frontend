@@ -1,6 +1,5 @@
 <template>
   <DefaultLayout>
-    {{programs}}
     <v-expansion-panels>
 <!--현재 모집중인 레슨들-->
       <v-expansion-panel

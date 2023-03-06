@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 카카오 로그인 API 컴포넌트 -->
+
 <template>
   <v-card-title style="align-content: center">로그인/회원가입</v-card-title>
   <v-divider/>

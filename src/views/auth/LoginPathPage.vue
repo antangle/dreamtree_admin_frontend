@@ -1,3 +1,7 @@
+
+<!--최서연 ver.0.1-->
+<!-- 로그인 경로 설정 페이지 -->
+
 <template>
   <DefaultLayout>
 
