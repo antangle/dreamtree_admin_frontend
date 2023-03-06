@@ -1,5 +1,7 @@
+<!--이승윤 ver0.1-->
+
 <template>
-x  <DefaultLayout>     <!--카테고리-->
+    <DefaultLayout>     <!--카테고리-->
       <v-container class="form-container">
           <v-row>
             <v-col>
